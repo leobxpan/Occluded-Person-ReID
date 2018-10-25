@@ -44,6 +44,7 @@ sudo apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran \
  && sudo apt-get install -y pkg-config \
  && sudo apt-get install -y libgraphviz-dev 
 
+
 # keras
 sudo pip install keras
 
@@ -56,6 +57,8 @@ sudo pip install awscli --upgrade --user
 git clone https://github.com/huanghoujing/AlignedReID-Re-Production-Pytorch.git
 # Install the requirements for the AlignID project
 sudo pip install -r ~/AlignedReID-Re-Production-Pytorch/requirements.txt
+sudo pip install torch
 
-# Get data from S3
-aws s3 sync s3://aligniddata datasets/
+# Install CUDA
+sudo apt-get upgrade -y linux-aws
+sudo reboot
