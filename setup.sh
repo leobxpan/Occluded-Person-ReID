@@ -54,6 +54,8 @@ sudo pip install awscli --upgrade --user
 
 # Clone the repo
 git clone https://github.com/huanghoujing/AlignedReID-Re-Production-Pytorch.git
+# Install the requirements for the AlignID project
+sudo pip install -r ~/AlignedReID-Re-Production-Pytorch/requirements.txt
 
 # Get data from S3
 aws s3 sync s3://aligniddata datasets/
