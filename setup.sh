@@ -46,3 +46,7 @@ sudo apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran \
 
 # keras
 sudo pip install keras
+
+# Install AWSCLI
+sudo apt -y install awscli 
+sudo pip install awscli --upgrade --user
