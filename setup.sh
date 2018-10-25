@@ -50,3 +50,10 @@ sudo pip install keras
 # Install AWSCLI
 sudo apt -y install awscli 
 sudo pip install awscli --upgrade --user
+
+
+# Clone the repo
+git clone https://github.com/huanghoujing/AlignedReID-Re-Production-Pytorch.git
+
+# Get data from S3
+aws s3 sync s3://aligniddata datasets/
