@@ -3,7 +3,7 @@ python script/experiment/train_ml.py \
 -r 1 \
 --num_models 2 \
 --dataset market1501 \
---ids_per_batch 2 \
+--ids_per_batch 12 \
 --ims_per_id 4 \
 --normalize_feature false \
 -gm 0.3 \
@@ -16,4 +16,4 @@ python script/experiment/train_ml.py \
 --base_lr 2e-4 \
 --lr_decay_type exp \
 --exp_decay_at_epoch 151 \
---total_epochs 300
+--total_epochs 1
