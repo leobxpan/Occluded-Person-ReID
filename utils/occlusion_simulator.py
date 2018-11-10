@@ -32,7 +32,7 @@ def occlusion_simulator(image_path, height, width):
 
 
 if __name__ == "__main__":
-    image_dir = sys.argv([1])
+    image_dir = sys.argv([0])
     files = os.listdir(image_dir)
     for f in tqdm(files):
         occlusion_simulator(os.path.join(image_dir, f))
