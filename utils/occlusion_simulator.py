@@ -2,7 +2,8 @@ import numpy as np
 from keras.preprocessing import image
 import os
 from scipy.misc import imsave
-
+import sys
+from tqdm import tqdm
 
 def occlusion_simulator(image_path, height, width):
     """
@@ -28,3 +29,10 @@ def occlusion_simulator(image_path, height, width):
     if not os.path.exists (save_dir):
         os.mkdir (save_dir)
     imsave(save_path, transformed_img)
+
+
+if __name__ == "__main__":
+    image_dir = sys.argv([1])
+    files = os.listdir(image_dir)
+    for f in tqdm(files):
+        occlusion_simulator(os.path.join(image_dir, f))
