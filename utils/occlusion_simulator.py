@@ -1,9 +1,6 @@
-import cv2
 import numpy as np
 from keras.preprocessing import image
-import matplotlib.pyplot as plt
 import os
-import cv2
 from scipy.misc import imsave
 
 
