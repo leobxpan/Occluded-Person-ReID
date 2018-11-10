@@ -9,9 +9,9 @@ from scipy.misc import imsave
 
 def occlusion_simulator(image_path, height, width):
     """
-    @param image_path: The path to the image to edit
-    @param coords: A tuple of x/y coordinates (x1, y1, x2, y2)
-    @param saved_location: Path to save the cropped image
+    @param image_path: (absolute path) The path to the image to edit
+    @param height: (int) Height of the black box in pixexls
+    @param width: (int) Width of the black box in pixexls
     """
     img = image.load_img (image_path)
     img = image.img_to_array(img)
