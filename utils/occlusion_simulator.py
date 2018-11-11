@@ -11,7 +11,7 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
     @param height: (int) Height of the black box in pixexls
     @param width: (int) Width of the black box in pixexls
     @param method: (str) takes 'random' or 'fixed' as a way of occlusion
-    @param area: (str) if 
+    @param area: (str) if
     """
     # Read the image into python
     if image_path.split("/")[-1].startswith(".") or image_path.split("/")[-1].startswith("transformed"):
@@ -46,17 +46,17 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
         if area == 'top':
             start_height = 0
             start_width = 0
-            mask[start_height: int(img.shape[0]*0.33), start_width:img.shape[1]] = np.zeros ([int(img.shape[0]*0.33), img.shape[1], 3])
+            mask[start_height: int(img.shape[0]*0.33), start_width:img.shape[1]] = np.zeros([int(img.shape[0]*0.33), img.shape[1], 3])
+
         elif area == 'bottom':
             start_height = int (img.shape[0] * 0.66)
             start_width = 0
-            mask[start_height: int (img.shape[0]), start_width:img.shape[1]] = np.zeros (
-                [int (img.shape[0]), img.shape[1], 3])
+            mask[start_height: int (img.shape[0]), start_width:img.shape[1]] = np.zeros ([int (abs(start_height - img.shape[0])), img.shape[1], 3])
+
         elif area == 'middle':
             start_height = int (img.shape[0] * 0.33)
             start_width = 0
-            mask[start_height: int (img.shape[0]*0.66), start_width:img.shape[1]] = np.zeros (
-                [int (img.shape[0]*0.66), img.shape[1], 3])
+            mask[start_height: int (img.shape[0]*0.66), start_width:img.shape[1]] = np.zeros([int (abs(start_height - img.shape[0]*0.66)), img.shape[1], 3])
 
     # Transform the image using mask created
     transformed_img = np.multiply (img.flatten (), mask.flatten ())
