@@ -46,17 +46,45 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
         if area == 'top':
             start_height = 0
             start_width = 0
-            mask[start_height: int(img.shape[0]*0.33), start_width:img.shape[1]] = np.zeros([int(img.shape[0]*0.33), img.shape[1], 3])
+            mask[start_height: int(org_shape[0]*0.33), start_width:org_shape[1]] = np.zeros([int(org_shape[0]*0.33), org_shape[1], 3])
 
         elif area == 'bottom':
-            start_height = int (img.shape[0] * 0.66)
+            start_height = int (org_shape[0] * 0.66)
             start_width = 0
-            mask[start_height: int (img.shape[0]), start_width:img.shape[1]] = np.zeros ([int (abs(start_height - img.shape[0])), img.shape[1], 3])
+            mask[start_height: int (org_shape[0]), start_width:org_shape[1]] = np.zeros ([int (abs(start_height - org_shape[0])), org_shape[1], 3])
 
         elif area == 'middle':
-            start_height = int (img.shape[0] * 0.33)
+            start_height = int (org_shape[0] * 0.33)
             start_width = 0
-            mask[start_height: int (img.shape[0]*0.66), start_width:img.shape[1]] = np.zeros([int (abs(start_height - img.shape[0]*0.66)), img.shape[1], 3])
+            mask[start_height: int (org_shape[0]*0.66), start_width:org_shape[1]] = np.zeros([int (abs(start_height - org_shape[0]*0.66)), org_shape[1], 3])
+
+        elif area == 'top50':
+            start_height = 0
+            end_height = int(org_shape[0]*0.33)
+            mean_width = abs(np.mean([0, org_shape[1]]))
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
+            mask[start_height:end_height, int (start_width):int (end_width)] = np.zeros ([abs (start_height - end_height),
+                                                                                          abs (int (end_width - start_width)), 3])
+
+        elif area == 'middle50':
+            start_height = int(org_shape[0]*0.33)
+            end_height = int(org_shape[0]*0.66)
+            mean_width = abs(np.mean([0, org_shape[1]]))
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
+            mask[start_height:end_height, int(start_width):int(end_width)] = np.zeros([abs(start_height-end_height),
+                                                                                                   abs(int(end_width - start_width)), 3])
+
+        elif area == 'bottom50':
+            start_height = int (org_shape[0] * 0.66)
+            end_height = int (org_shape[0])
+            mean_width = abs(np.mean([0, org_shape[1]]))
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
+            mask[start_height:end_height, int (start_width):int (end_width)] = np.zeros ([abs (start_height - end_height),
+                                                                                          abs (int (end_width - start_width)), 3])
+
 
     # Transform the image using mask created
     transformed_img = np.multiply (img.flatten (), mask.flatten ())
@@ -77,7 +105,8 @@ if __name__ == "__main__":
     parser.add_argument ('--h', type=int, help='Height of the mask')
     parser.add_argument ('--w', type=int, help='Width of the mask')
     parser.add_argument ('--m', type=str, help='Method of excecution', choices = ['random', 'fixed'])
-    parser.add_argument ('--a', type=str, help='Area to be masked', choices=['top', 'bottom', 'middle'])
+    parser.add_argument ('--a', type=str, help='Area to be masked', choices=['top', 'bottom', 'middle', 'top50',
+                                                                             'middle50', 'bottom50'])
 
     args = parser.parse_args ()
     print args
