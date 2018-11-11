@@ -1,4 +1,4 @@
-On Market Data:
+On Market Data (without any occlusion):
 Before ReRank : [mAP: 72.28%], [cmc1: 87.05%], [cmc5: 95.07%], [cmc10: 96.91%]
 Post ReRank   : [mAP: 85.91%], [cmc1: 89.73%], [cmc5: 94.54%], [cmc10: 95.90%]
 
@@ -7,13 +7,28 @@ Before ReRank : [mAP: 9.12%], [cmc1: 31.00%], [cmc5: 53.62%], [cmc10: 62.44%]
 Post ReRank   : [mAP: 10.72%], [cmc1: 31.35%], [cmc5: 51.69%], [cmc10: 60.15%]
 
 On Market occluded (Top 1/3rd occlusion): 
-Before ReRank : 
-Post ReRank   : 
+Before ReRank : [mAP: 45.37%], [cmc1: 66.33%], [cmc5: 83.40%], [cmc10: 88.54%]
+Post ReRank   : [mAP: 60.80%], [cmc1: 70.67%], [cmc5: 82.30%], [cmc10: 85.90%]
 
 On Market occluded (Middle 1/3rd occlusion): 
+Before ReRank : [mAP: 31.91%], [cmc1: 54.66%], [cmc5: 74.55%], [cmc10: 81.26%]
+Post ReRank   : [mAP: 47.33%], [cmc1: 60.27%], [cmc5: 75.09%], [cmc10: 79.84%]
+
+On Market occluded (Bottom 1/3rd occlusion): 
+Before ReRank : [mAP: 37.34%], [cmc1: 60.30%], [cmc5: 78.53%], [cmc10: 85.27%]
+Post ReRank   : [mAP: 51.23%], [cmc1: 64.58%], [cmc5: 77.79%], [cmc10: 82.99%]
+
+
+On Market occluded (Top Mid Occlusion): 
+Before ReRank : [mAP: 48.30%], [cmc1: 68.59%], [cmc5: 85.10%], [cmc10: 89.61%]
+Post ReRank   : [mAP: 64.95%], [cmc1: 73.40%], [cmc5: 84.32%], [cmc10: 87.68%]
+
+
+On Market occluded (Middle Mid Occlusion): 
 Before ReRank : 
 Post ReRank   : 
 
-On Market occluded (Bottom 1/3rd occlusion): 
+
+On Market occluded (Bottom Mid Occlusion): 
 Before ReRank : 
 Post ReRank   : 
