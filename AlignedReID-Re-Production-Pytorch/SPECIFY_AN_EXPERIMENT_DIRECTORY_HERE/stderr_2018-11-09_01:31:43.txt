@@ -1,0 +1,14 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 632, in <module>
+    main()
+  File "script/experiment/train.py", line 389, in main
+    test(load_model_weight=True)
+  File "script/experiment/train.py", line 372, in test
+    sd = torch.load(cfg.model_weight_file, map_location=map_location)
+  File "/usr/local/lib/python2.7/dist-packages/torch/serialization.py", line 356, in load
+    f = open(f, 'rb')
+IOError: [Errno 2] No such file or directory: 'THE_DOWNLOADED_MODEL_WEIGHT_FILE'
