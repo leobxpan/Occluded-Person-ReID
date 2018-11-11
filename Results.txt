@@ -25,10 +25,10 @@ Post ReRank   : [mAP: 64.95%], [cmc1: 73.40%], [cmc5: 84.32%], [cmc10: 87.68%]
 
 
 On Market occluded (Middle Mid Occlusion): 
-Before ReRank : 
-Post ReRank   : 
+Before ReRank : [mAP: 34.44%], [cmc1: 57.66%], [cmc5: 76.99%], [cmc10: 83.14%]
+Post ReRank   : [mAP: 51.49%], [cmc1: 63.95%], [cmc5: 77.23%], [cmc10: 82.13%]
 
 
 On Market occluded (Bottom Mid Occlusion): 
-Before ReRank : 
-Post ReRank   : 
+Before ReRank : [mAP: 37.91%], [cmc1: 61.07%], [cmc5: 80.20%], [cmc10: 86.64%]
+Post ReRank   : [mAP: 52.96%], [cmc1: 66.36%], [cmc5: 79.45%], [cmc10: 84.12%]
