@@ -62,8 +62,8 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
             start_height = 0
             end_height = int(org_shape[0]*0.33)
             mean_width = abs(np.mean([0, org_shape[1]]))
-            start_width = mean_width - int(org_shape[1]*0.33/2)
-            end_width = mean_width + int(org_shape[1]*0.33/2)
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
             mask[start_height:end_height, int (start_width):int (end_width)] = np.zeros ([abs (start_height - end_height),
                                                                                           abs (int (end_width - start_width)), 3])
 
@@ -71,8 +71,8 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
             start_height = int(org_shape[0]*0.33)
             end_height = int(org_shape[0]*0.66)
             mean_width = abs(np.mean([0, org_shape[1]]))
-            start_width = mean_width - int(org_shape[1]*0.33/2)
-            end_width = mean_width + int(org_shape[1]*0.33/2)
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
             mask[start_height:end_height, int(start_width):int(end_width)] = np.zeros([abs(start_height-end_height),
                                                                                                    abs(int(end_width - start_width)), 3])
 
@@ -80,8 +80,8 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
             start_height = int (org_shape[0] * 0.66)
             end_height = int (org_shape[0])
             mean_width = abs(np.mean([0, org_shape[1]]))
-            start_width = mean_width - int(org_shape[1]*0.33/2)
-            end_width = mean_width + int(org_shape[1]*0.33/2)
+            start_width = mean_width - int(org_shape[1]*0.66/2)
+            end_width = mean_width + int(org_shape[1]*0.66/2)
             mask[start_height:end_height, int (start_width):int (end_width)] = np.zeros ([abs (start_height - end_height),
                                                                                           abs (int (end_width - start_width)), 3])
 
