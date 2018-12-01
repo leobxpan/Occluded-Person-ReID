@@ -1,5 +1,5 @@
-from .PreProcessImage import PreProcessIm
-from .Prefetcher import Prefetcher
+from PreProcessImage import PreProcessIm
+from Prefetcher import Prefetcher
 import numpy as np
 
 
