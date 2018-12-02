@@ -5,7 +5,7 @@ import glob
 from collections import defaultdict
 import shutil
 
-new_im_name_tmpl = '{:08d}_{:04d}_{:08d}.jpg'
+new_im_name_tmpl = '{:08d}_{:04d}_{:08d}_{:01d}.jpg'
 
 def parse_im_name(im_name, parse_type='id'):
   """Get the person id or cam from an image name."""
@@ -27,7 +27,7 @@ def get_im_names(im_dir, pattern='*.jpg', return_np=True, return_path=False):
   return ret
 
 
-def move_ims(ori_im_paths, new_im_dir, parse_im_name, new_im_name_tmpl):
+def move_ims(ori_im_paths, new_im_dir, parse_im_name, new_im_name_tmpl, occluded=0):
   """Rename and move images to new directory."""
   cnt = defaultdict(int)
   new_im_names = []
@@ -36,7 +36,7 @@ def move_ims(ori_im_paths, new_im_dir, parse_im_name, new_im_name_tmpl):
     id = parse_im_name(im_name, 'id')
     cam = parse_im_name(im_name, 'cam')
     cnt[(id, cam)] += 1
-    new_im_name = new_im_name_tmpl.format(id, cam, cnt[(id, cam)] - 1)
+    new_im_name = new_im_name_tmpl.format(id, cam, cnt[(id, cam)] - 1, occluded)
     shutil.copy(im_path, osp.join(new_im_dir, new_im_name))
     new_im_names.append(new_im_name)
   return new_im_names

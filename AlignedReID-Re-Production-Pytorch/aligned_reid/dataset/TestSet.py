@@ -37,6 +37,7 @@ class TestSet(Dataset):
       separate_camera_set=None,
       single_gallery_shot=None,
       first_match_break=None,
+      occluded = 0,
       **kwargs):
 
     super(TestSet, self).__init__(dataset_size=len(im_names), **kwargs)
@@ -49,6 +50,7 @@ class TestSet(Dataset):
     self.separate_camera_set = separate_camera_set
     self.single_gallery_shot = single_gallery_shot
     self.first_match_break = first_match_break
+    self.occluded = occluded
 
   def set_feat_func(self, extract_feat_func):
     self.extract_feat_func = extract_feat_func
@@ -62,20 +64,21 @@ class TestSet(Dataset):
     cam = parse_im_name(self.im_names[ptr], 'cam')
     # denoting whether the im is from query, gallery, or multi query set
     mark = self.marks[ptr]
-    return im, id, cam, im_name, mark
+    occluded = self.occluded[ptr]
+    return im, id, cam, im_name, mark, occluded
 
   def next_batch(self):
     if self.epoch_done and self.shuffle:
       self.prng.shuffle(self.im_names)
     samples, self.epoch_done = self.prefetcher.next_batch()
-    im_list, ids, cams, im_names, marks = zip(*samples)
+    im_list, ids, cams, im_names, marks, occluded = zip(*samples)
     # Transform the list into a numpy array with shape [N, ...]
     ims = np.stack(im_list, axis=0)
     ids = np.array(ids)
     cams = np.array(cams)
     im_names = np.array(im_names)
     marks = np.array(marks)
-    return ims, ids, cams, im_names, marks, self.epoch_done
+    return ims, ids, cams, im_names, marks, self.epoch_done, occluded
 
   def extract_feat(self, normalize_feat):
     """Extract the features of the whole image set.
@@ -90,15 +93,15 @@ class TestSet(Dataset):
       im_names: numpy array with shape [N]
       marks: numpy array with shape [N]
     """
-    global_feats, local_feats, ids, cams, im_names, marks = \
-      [], [], [], [], [], []
+    global_feats, local_feats, ids, cams, im_names, marks, occluded = \
+      [], [], [], [], [], [], []
     done = False
     step = 0
     printed = False
     st = time.time()
     last_time = time.time()
     while not done:
-      ims_, ids_, cams_, im_names_, marks_, done = self.next_batch()
+      ims_, ids_, cams_, im_names_, marks_, done, occluded_ = self.next_batch()
       global_feat, local_feat = self.extract_feat_func(ims_)
       global_feats.append(global_feat)
       local_feats.append(local_feat)
@@ -106,6 +109,7 @@ class TestSet(Dataset):
       cams.append(cams_)
       im_names.append(im_names_)
       marks.append(marks_)
+      occluded.append(occluded_)
 
       # log
       total_batches = (self.prefetcher.dataset_size
@@ -128,10 +132,11 @@ class TestSet(Dataset):
     cams = np.hstack(cams)
     im_names = np.hstack(im_names)
     marks = np.hstack(marks)
+    occluded = np.hstack(occluded)
     if normalize_feat:
       global_feats = normalize(global_feats, axis=1)
       local_feats = normalize(local_feats, axis=-1)
-    return global_feats, local_feats, ids, cams, im_names, marks
+    return global_feats, local_feats, ids, cams, im_names, marks, occluded
 
   @staticmethod
   def eval_map_cmc(

@@ -6,7 +6,6 @@ from PIL import Image
 import numpy as np
 from collections import defaultdict
 
-
 class TrainSet(Dataset):
   """Training set for triplet loss.
   Args:
@@ -20,6 +19,7 @@ class TrainSet(Dataset):
       ids2labels=None,
       ids_per_batch=None,
       ims_per_id=None,
+      occluded = 0,
       **kwargs):
 
     # The im dir of all images
@@ -28,6 +28,7 @@ class TrainSet(Dataset):
     self.ids2labels = ids2labels
     self.ids_per_batch = ids_per_batch
     self.ims_per_id = ims_per_id
+    self.occluded = occluded
 
     im_ids = [parse_im_name(name, 'id') for name in im_names]
     self.ids_to_im_inds = defaultdict(list)
@@ -55,7 +56,8 @@ class TrainSet(Dataset):
            for name in im_names]
     ims, mirrored = zip(*[self.pre_process_im(im) for im in ims])
     labels = [self.ids2labels[self.ids[ptr]] for _ in range(self.ims_per_id)]
-    return ims, im_names, labels, mirrored
+    occluded = [self.occluded[ind] for ind in inds]
+    return ims, im_names, labels, mirrored, occluded
 
   def next_batch(self):
     """Next batch of images and labels.
@@ -70,7 +72,7 @@ class TrainSet(Dataset):
     if self.epoch_done and self.shuffle:
       np.random.shuffle(self.ids)
     samples, self.epoch_done = self.prefetcher.next_batch()
-    im_list, im_names, labels, mirrored = zip(*samples)
+    im_list, im_names, labels, mirrored, occluded = zip(*samples)
     # t = time.time()
     # Transform the list into a numpy array with shape [N, ...]
     ims = np.stack(np.concatenate(im_list))
@@ -78,4 +80,4 @@ class TrainSet(Dataset):
     im_names = np.concatenate(im_names)
     labels = np.concatenate(labels)
     mirrored = np.concatenate(mirrored)
-    return ims, im_names, labels, mirrored, self.epoch_done
+    return ims, im_names, labels, mirrored, self.epoch_done, occluded

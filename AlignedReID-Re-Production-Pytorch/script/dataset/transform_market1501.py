@@ -33,7 +33,7 @@ def parse_original_im_name(im_name, parse_type='id'):
   return parsed
 
 
-def save_images(zip_file, save_dir=None, train_test_split_file=None):
+def save_images(zip_file, save_dir=None, train_test_split_file=None, occluded = 0):
   """Rename and move all used images to a directory."""
 
   print("Extracting zip file")
@@ -46,6 +46,7 @@ def save_images(zip_file, save_dir=None, train_test_split_file=None):
   print("Extracting zip file done")
 
   new_im_dir = osp.join(save_dir, 'images')
+
   may_make_dir(osp.abspath(new_im_dir))
   raw_dir = osp.join(save_dir, osp.basename(zip_file)[:-4])
 
@@ -86,7 +87,7 @@ def save_images(zip_file, save_dir=None, train_test_split_file=None):
   nums.append(len(im_paths_))
 
   im_names = move_ims(
-    im_paths, new_im_dir, parse_original_im_name, new_im_name_tmpl)
+    im_paths, new_im_dir, parse_original_im_name, new_im_name_tmpl, occluded)
 
   split = dict()
   keys = ['trainval_im_names', 'gallery_im_names', 'q_im_names', 'mq_im_names']
@@ -100,13 +101,13 @@ def save_images(zip_file, save_dir=None, train_test_split_file=None):
   return split
 
 
-def transform(zip_file, save_dir=None):
+def transform(zip_file, save_dir=None, occluded=0):
   """Refactor file directories, rename images and partition the train/val/test 
   set.
   """
 
   train_test_split_file = osp.join(save_dir, 'train_test_split.pkl')
-  train_test_split = save_images(zip_file, save_dir, train_test_split_file)
+  train_test_split = save_images(zip_file, save_dir, train_test_split_file, occluded)
   # train_test_split = load_pickle(train_test_split_file)
 
   # partition train/val/test set
@@ -151,7 +152,8 @@ def transform(zip_file, save_dir=None):
                 'val_im_names': val_im_names,
                 'val_marks': val_marks,
                 'test_im_names': test_im_names,
-                'test_marks': test_marks}
+                'test_marks': test_marks,
+                'occluded': [occluded] * len(train_im_names)}
   partition_file = osp.join(save_dir, 'partitions.pkl')
   save_pickle(partitions, partition_file)
   print('Partition file saved to {}'.format(partition_file))
@@ -165,7 +167,11 @@ if __name__ == '__main__':
                       default='~/Dataset/market1501/Market-1501-v15.09.15.zip')
   parser.add_argument('--save_dir', type=str,
                       default='~/Dataset/market1501')
+  parser.add_argument('--occluded', type = int,
+                      default = 0)
+
   args = parser.parse_args()
   zip_file = osp.abspath(osp.expanduser(args.zip_file))
   save_dir = osp.abspath(osp.expanduser(args.save_dir))
-  transform(zip_file, save_dir)
+  occluded = int(args.occluded)
+  transform(zip_file, save_dir, occluded)

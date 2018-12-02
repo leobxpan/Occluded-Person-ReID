@@ -81,6 +81,7 @@ class Config(object):
     parser.add_argument('--staircase_decay_multiply_factor',
                         type=float, default=0.1)
     parser.add_argument('--total_epochs', type=int, default=150)
+    parser.add_argument ('--occluded', type=int, default=0)
 
     args = parser.parse_known_args()[0]
 
@@ -116,6 +117,7 @@ class Config(object):
     self.crop_prob = args.crop_prob
     self.crop_ratio = args.crop_ratio
     self.resize_h_w = args.resize_h_w
+    self.occluded = args.occluded
 
     # Whether to scale by 1/255
     self.scale_im = True
@@ -154,6 +156,7 @@ class Config(object):
       crop_prob=self.crop_prob,
       crop_ratio=self.crop_ratio,
       mirror_type=self.train_mirror_type,
+      occluded = self.occluded,
       prng=prng)
     self.train_set_kwargs.update(dataset_kwargs)
 
@@ -166,6 +169,7 @@ class Config(object):
       final_batch=self.test_final_batch,
       shuffle=self.test_shuffle,
       mirror_type=self.test_mirror_type,
+      occluded=self.occluded,
       prng=prng)
     self.test_set_kwargs.update(dataset_kwargs)
 
@@ -438,7 +442,7 @@ def main():
       step += 1
       step_st = time.time()
 
-      ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
+      ims, im_names, labels, mirrored, epoch_done, occluded = train_set.next_batch()
 
       ims_var = Variable(TVT(torch.from_numpy(ims).float()))
       labels_t = TVT(torch.from_numpy(labels).long())
