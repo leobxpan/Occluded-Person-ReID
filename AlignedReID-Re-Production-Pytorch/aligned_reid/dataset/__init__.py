@@ -12,8 +12,9 @@ from .TestSet import TestSet
 def create_dataset(
     name='market1501',
     part='trainval',
+    occluded = 0,
     **kwargs):
-  assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_transformed'], \
+  assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded'], \
     "Unsupported Dataset {}".format(name)
 
   assert part in ['trainval', 'train', 'val', 'test'], \
@@ -42,9 +43,9 @@ def create_dataset(
     im_dir = ospeu('~/Dataset/market1501_cuhk03_duke/trainval_images')
     partition_file = ospeu('~/Dataset/market1501_cuhk03_duke/partitions.pkl')
 
-  elif name == 'market1501_transformed':
-    im_dir = ospeu('~/Dataset/market1501/images/transformed')
-    partition_file = ospeu('~/Dataset/market1501/partitions.pkl')
+  elif name == 'market1501_occluded':
+    im_dir = ospeu('~/Dataset/market1501_occluded/images')
+    partition_file = ospeu('~/Dataset/market1501_occluded/partitions.pkl')
       
   ##################
   # Create Dataset #
@@ -65,6 +66,7 @@ def create_dataset(
       im_dir=im_dir,
       im_names=im_names,
       ids2labels=ids2labels,
+      occluded=occluded
       **kwargs)
 
   elif part == 'train':
@@ -74,6 +76,7 @@ def create_dataset(
       im_dir=im_dir,
       im_names=im_names,
       ids2labels=ids2labels,
+      occluded=occluded
       **kwargs)
 
   elif part == 'val':
