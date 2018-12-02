@@ -21,6 +21,7 @@ def load_pickle(path):
   """Check and load pickle object.
   According to this post: https://stackoverflow.com/a/41733927, cPickle and 
   disabling garbage collector helps with loading speed."""
+  print(path)
   assert osp.exists(path)
   # gc.disable()
   with open(path, 'rb') as f:

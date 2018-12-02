@@ -25,7 +25,8 @@ def move_ims(
     new_im_dir,
     parse_im_name,
     new_im_name_tmpl,
-    new_start_id):
+    new_start_id,
+    occluded):
   """Rename and move images to new directory."""
   ids = [parse_im_name(osp.basename(p), 'id') for p in ori_im_paths]
   cams = [parse_im_name(osp.basename(p), 'cam') for p in ori_im_paths]
@@ -37,10 +38,10 @@ def move_ims(
 
   new_im_names = []
   cnt = defaultdict(int)
-  for im_path, id, cam in zip(ori_im_paths, ids, cams):
+  for im_path, id, cam, im_occluded in zip(ori_im_paths, ids, cams, occluded):
     new_id = id_mapping[id]
     cnt[(new_id, cam)] += 1
-    new_im_name = new_im_name_tmpl.format(new_id, cam, cnt[(new_id, cam)] - 1)
+    new_im_name = new_im_name_tmpl.format(new_id, cam, cnt[(new_id, cam)] - 1, im_occluded)
     shutil.copy(im_path, ospj(new_im_dir, new_im_name))
     new_im_names.append(new_im_name)
   return new_im_names, id_mapping
@@ -54,18 +55,22 @@ def combine_trainval_sets(
   may_make_dir(new_im_dir)
   new_im_names = []
   new_start_id = 0
+  occluded = []
   for im_dir, partition_file in zip(im_dirs, partition_files):
     partitions = load_pickle(partition_file)
     im_paths = [ospj(im_dir, n) for n in partitions['trainval_im_names']]
     im_paths.sort()
+    occluded_ = [n for n in partitions['occluded']]
+    occluded += occluded_
     new_im_names_, id_mapping = move_ims(
-      im_paths, new_im_dir, parse_im_name, new_im_name_tmpl, new_start_id)
+      im_paths, new_im_dir, parse_im_name, new_im_name_tmpl, new_start_id, occluded)
     new_start_id += len(id_mapping)
     new_im_names += new_im_names_
 
   new_ids = range(new_start_id)
   partitions = {'trainval_im_names': new_im_names,
                 'trainval_ids2labels': dict(zip(new_ids, new_ids)),
+                'occluded': occluded
                 }
   partition_file = ospj(save_dir, 'partitions.pkl')
   save_pickle(partitions, partition_file)
@@ -76,7 +81,7 @@ if __name__ == '__main__':
   import argparse
 
   parser = argparse.ArgumentParser(
-    description="Combine Trainval Set of Market1501, CUHK03, DukeMTMC-reID")
+    description="Combine Trainval Set of Market1501, Market1501_Occlude, CUHK03, DukeMTMC-reID")
 
   # Image directory and partition file of transformed datasets
 
@@ -89,6 +94,17 @@ if __name__ == '__main__':
     '--market1501_partition_file',
     type=str,
     default=ospeu('~/Dataset/market1501/partitions.pkl')
+  )
+
+  parser.add_argument (
+    '--market1501_occluded_im_dir',
+    type=str,
+    default=ospeu ('~/Dataset/market1501_occluded/images')
+  )
+  parser.add_argument (
+    '--market1501_occluded_partition_file',
+    type=str,
+    default=ospeu ('~/Dataset/market1501_occluded/partitions.pkl')
   )
 
   cuhk03_im_type = ['detected', 'labeled'][0]
@@ -125,13 +141,15 @@ if __name__ == '__main__':
 
   im_dirs = [
     ospap(ospeu(args.market1501_im_dir)),
-    ospap(ospeu(args.cuhk03_im_dir)),
-    ospap(ospeu(args.duke_im_dir))
+    ospap (ospeu (args.market1501_occluded_im_dir)),
+    #ospap(ospeu(args.cuhk03_im_dir)),
+    #ospap(ospeu(args.duke_im_dir))
   ]
   partition_files = [
     ospap(ospeu(args.market1501_partition_file)),
-    ospap(ospeu(args.cuhk03_partition_file)),
-    ospap(ospeu(args.duke_partition_file))
+    ospap (ospeu (args.market1501_occluded_partition_file)),
+    #ospap(ospeu(args.cuhk03_partition_file)),
+    #ospap(ospeu(args.duke_partition_file))
   ]
 
   save_dir = ospap(ospeu(args.save_dir))
