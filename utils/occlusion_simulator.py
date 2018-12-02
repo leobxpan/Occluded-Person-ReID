@@ -4,8 +4,9 @@ import os
 from scipy.misc import imsave
 from tqdm import tqdm
 import argparse
+import shutil
 
-def occlusion_simulator(image_path, height, width, method = 'random', area = 'top'):
+def occlusion_simulator(image_path, height, width, save_dir, method = 'random', area = 'top'):
     """
     @param image_path: (absolute path) The path to the image to edit
     @param height: (int) Height of the black box in pixexls
@@ -14,7 +15,7 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
     @param area: (str) if
     """
     # Read the image into python
-    if image_path.split("/")[-1].startswith(".") or image_path.split("/")[-1].startswith("transformed"):
+    if not image_path.split("/")[-1].endswith(".jpg"):
         return "Exiting as its not an image"
     img = image.load_img (image_path)
     img = image.img_to_array(img)
@@ -84,19 +85,16 @@ def occlusion_simulator(image_path, height, width, method = 'random', area = 'to
             end_width = mean_width + int(org_shape[1]*0.66/2)
             mask[start_height:end_height, int (start_width):int (end_width)] = np.zeros ([abs (start_height - end_height),
                                                                                           abs (int (end_width - start_width)), 3])
-
-
     # Transform the image using mask created
     transformed_img = np.multiply (img.flatten (), mask.flatten ())
     transformed_img = transformed_img.astype ('int').reshape (org_shape)
 
-    # Save the transformed image to folder /transformed/
-    save_dir = os.path.join('/'.join(image_path.split('/')[:-1]), "transformed/")
-    save_path = os.path.join('/'.join(image_path.split('/')[:-1]), "transformed/%s" %(image_path.split('/')[-1]))
+    # Save the transformed image to folder /occludedimages/
+    save_path = os.path.join(save_dir, image_path.split('/')[-1])
     if not os.path.exists (save_dir):
         os.mkdir (save_dir)
-
     imsave(save_path, transformed_img)
+
 
 
 if __name__ == "__main__":
@@ -107,9 +105,27 @@ if __name__ == "__main__":
     parser.add_argument ('--m', type=str, help='Method of excecution', choices = ['random', 'fixed'])
     parser.add_argument ('--a', type=str, help='Area to be masked', choices=['top', 'bottom', 'middle', 'top50',
                                                                              'middle50', 'bottom50'])
+    #parser.add_argument('--save_dir',type = str, help = 'Directory to save the images')
 
-    args = parser.parse_args ()
-    print args
-    files = os.listdir(args.d)
-    for f in tqdm(files):
-        occlusion_simulator(os.path.join(args.d, f), args.h, args.w, args.m, args.a)
+    args = parser.parse_args()
+    folders = os.listdir(args.d)
+
+    if not os.path.exists(os.path.join(args.d, "occludedimages")):
+        os.mkdir(os.path.join(args.d, "occludedimages"))
+
+    for folder in folders:
+        print folder
+        if folder not in ['.DS_Store', 'Thumbs.db', 'readme.txt', 'occludedimages']:
+            if folder != 'gt_query':
+                files = os.listdir(os.path.join(args.d, folder))
+                for f in tqdm(files):
+                    if f not in ['.DS_Store', 'Thumbs.db']:
+                        save_dir = os.path.join(args.d, "occludedimages", folder)
+                        occlusion_simulator(os.path.join(args.d, folder, f), args.h, args.w, save_dir, args.m, args.a)
+            else:
+                save_dir = os.path.join (args.d, "occludedimages")
+                if not os.path.exists (save_dir):
+                    os.mkdir (save_dir)
+                    os.system('cp -r %s %s' %(os.path.join(args.d, folder), save_dir))
+                else:
+                    pass
