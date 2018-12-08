@@ -1,5 +1,6 @@
 import numpy as np
 import os.path as osp
+
 ospj = osp.join
 ospeu = osp.expanduser
 
@@ -10,118 +11,118 @@ from .TestSet import TestSet
 
 
 def create_dataset(
-    name='market1501',
-    part='trainval',
-    occluded = 0,
-    **kwargs):
-  assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded'], \
-    "Unsupported Dataset {}".format(name)
+        name='market1501',
+        part='trainval',
+        occluded=0,
+        **kwargs):
+    assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded'], \
+        "Unsupported Dataset {}".format ( name )
 
-  assert part in ['trainval', 'train', 'val', 'test'], \
-    "Unsupported Dataset Part {}".format(part)
+    assert part in ['trainval', 'train', 'val', 'test'], \
+        "Unsupported Dataset Part {}".format ( part )
 
-  ########################################
-  # Specify Directory and Partition File #
-  ########################################
+    ########################################
+    # Specify Directory and Partition File #
+    ########################################
 
-  if name == 'market1501':
-    im_dir = ospeu('~/Dataset/market1501/images')
-    partition_file = ospeu('~/Dataset/market1501/partitions.pkl')
+    if name == 'market1501':
+        im_dir = ospeu ( '~/Dataset/market1501/images' )
+        partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
-  elif name == 'cuhk03':
-    im_type = ['detected', 'labeled'][0]
-    im_dir = ospeu(ospj('~/Dataset/cuhk03', im_type, 'images'))
-    partition_file = ospeu(ospj('~/Dataset/cuhk03', im_type, 'partitions.pkl'))
+    elif name == 'cuhk03':
+        im_type = ['detected', 'labeled'][0]
+        im_dir = ospeu ( ospj ( '~/Dataset/cuhk03', im_type, 'images' ) )
+        partition_file = ospeu ( ospj ( '~/Dataset/cuhk03', im_type, 'partitions.pkl' ) )
 
-  elif name == 'duke':
-    im_dir = ospeu('~/Dataset/duke/images')
-    partition_file = ospeu('~/Dataset/duke/partitions.pkl')
+    elif name == 'duke':
+        im_dir = ospeu ( '~/Dataset/duke/images' )
+        partition_file = ospeu ( '~/Dataset/duke/partitions.pkl' )
 
-  elif name == 'combined':
-    assert part in ['trainval'], \
-      "Only trainval part of the combined dataset is available now."
-    im_dir = ospeu('~/Dataset/market1501_cuhk03_duke/trainval_images')
-    partition_file = ospeu('~/Dataset/market1501_cuhk03_duke/partitions.pkl')
+    elif name == 'combined':
+        assert part in ['trainval'], \
+            "Only trainval part of the combined dataset is available now."
+        im_dir = ospeu ( '~/Dataset/market1501_cuhk03_duke/trainval_images' )
+        partition_file = ospeu ( '~/Dataset/market1501_cuhk03_duke/partitions.pkl' )
 
-  elif name == 'market1501_occluded':
-    im_dir = ospeu('~/Dataset/market1501_occluded/images')
-    partition_file = ospeu('~/Dataset/market1501_occluded/partitions.pkl')
-      
-  ##################
-  # Create Dataset #
-  ##################
+    elif name == 'market1501_occluded':
+        im_dir = ospeu ( '~/Dataset/market1501_occluded/images' )
+        partition_file = ospeu ( '~/Dataset/market1501_occluded/partitions.pkl' )
 
-  # Use standard Market1501 CMC settings for all datasets here.
-  cmc_kwargs = dict(separate_camera_set=False,
-                    single_gallery_shot=False,
-                    first_match_break=True)
+    ##################
+    # Create Dataset #
+    ##################
 
-  partitions = load_pickle(partition_file)
-  im_names = partitions['{}_im_names'.format(part)]
+    # Use standard Market1501 CMC settings for all datasets here.
+    cmc_kwargs = dict ( separate_camera_set=False,
+                        single_gallery_shot=False,
+                        first_match_break=True )
 
-  if part == 'trainval':
-    ids2labels = partitions['trainval_ids2labels']
+    partitions = load_pickle ( partition_file )
+    im_names = partitions['{}_im_names'.format ( part )]
 
-    ret_set = TrainSet(
-      im_dir=im_dir,
-      im_names=im_names,
-      ids2labels=ids2labels,
-      occluded=occluded
-      **kwargs)
+    if part == 'trainval':
+        ids2labels = partitions['trainval_ids2labels']
 
-  elif part == 'train':
-    ids2labels = partitions['train_ids2labels']
+        ret_set = TrainSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            ids2labels=ids2labels,
+            occluded=occluded,
+                     **kwargs)
 
-    ret_set = TrainSet(
-      im_dir=im_dir,
-      im_names=im_names,
-      ids2labels=ids2labels,
-      occluded=occluded
-      **kwargs)
+    elif part == 'train':
+        ids2labels = partitions['train_ids2labels']
 
-  elif part == 'val':
-    marks = partitions['val_marks']
-    kwargs.update(cmc_kwargs)
+        ret_set = TrainSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            ids2labels=ids2labels,
+            occluded=occluded,
+                     **kwargs )
 
-    ret_set = TestSet(
-      im_dir=im_dir,
-      im_names=im_names,
-      marks=marks,
-      **kwargs)
+    elif part == 'val':
+        marks = partitions['val_marks']
+        kwargs.update ( cmc_kwargs )
 
-  elif part == 'test':
-    marks = partitions['test_marks']
-    kwargs.update(cmc_kwargs)
+        ret_set = TestSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            marks=marks,
+            **kwargs )
 
-    ret_set = TestSet(
-      im_dir=im_dir,
-      im_names=im_names,
-      marks=marks,
-      **kwargs)
+    elif part == 'test':
+        marks = partitions['test_marks']
+        kwargs.update ( cmc_kwargs )
 
-  if part in ['trainval', 'train']:
-    num_ids = len(ids2labels)
-  elif part in ['val', 'test']:
-    ids = [parse_im_name(n, 'id') for n in im_names]
-    num_ids = len(list(set(ids)))
-    num_query = np.sum(np.array(marks) == 0)
-    num_gallery = np.sum(np.array(marks) == 1)
-    num_multi_query = np.sum(np.array(marks) == 2)
+        ret_set = TestSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            marks=marks,
+            **kwargs )
 
-  # Print dataset information
-  print('-' * 40)
-  print('{} {} set'.format(name, part))
-  print('-' * 40)
-  print('NO. Images: {}'.format(len(im_names)))
-  print('NO. IDs: {}'.format(num_ids))
+    if part in ['trainval', 'train']:
+        num_ids = len ( ids2labels )
+    elif part in ['val', 'test']:
+        ids = [parse_im_name ( n, 'id' ) for n in im_names]
+        num_ids = len ( list ( set ( ids ) ) )
+        num_query = np.sum ( np.array ( marks ) == 0 )
+        num_gallery = np.sum ( np.array ( marks ) == 1 )
+        num_multi_query = np.sum ( np.array ( marks ) == 2 )
 
-  try:
-    print('NO. Query Images: {}'.format(num_query))
-    print('NO. Gallery Images: {}'.format(num_gallery))
-    print('NO. Multi-query Images: {}'.format(num_multi_query))
-  except:
-    pass
+    # Print dataset information
+    print('-' * 40)
+    print('{} {} set'.format ( name, part ))
+    print('-' * 40)
+    print('NO. Images: {}'.format ( len ( im_names ) ))
+    print('NO. IDs: {}'.format ( num_ids ))
 
-  print('-' * 40)
+    try:
+        print('NO. Query Images: {}'.format ( num_query ))
+        print('NO. Gallery Images: {}'.format ( num_gallery ))
+        print('NO. Multi-query Images: {}'.format ( num_multi_query ))
+    except:
+        pass
 
-  return ret_set
+    print('-' * 40)
+
+    return ret_set
