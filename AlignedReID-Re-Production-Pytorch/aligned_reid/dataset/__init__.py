@@ -74,7 +74,6 @@ def create_dataset(
             im_dir=im_dir,
             im_names=im_names,
             ids2labels=ids2labels,
-            occluded=occluded,
                      **kwargs)
 
     elif part == 'train':
@@ -84,7 +83,6 @@ def create_dataset(
             im_dir=im_dir,
             im_names=im_names,
             ids2labels=ids2labels,
-            occluded=occluded,
                      **kwargs )
 
     elif part == 'val':
