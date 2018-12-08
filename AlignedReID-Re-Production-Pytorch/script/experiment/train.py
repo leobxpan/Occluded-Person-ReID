@@ -438,7 +438,7 @@ def main():
       step += 1
       step_st = time.time()
 
-      ims, im_names, labels, mirrored, epoch_done, occluded = train_set.next_batch()
+      ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
 
       ims_var = Variable(TVT(torch.from_numpy(ims).float()))
       labels_t = TVT(torch.from_numpy(labels).long())
