@@ -13,7 +13,6 @@ from .TestSet import TestSet
 def create_dataset(
         name='market1501',
         part='trainval',
-        occluded=0,
         **kwargs):
     assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded'], \
         "Unsupported Dataset {}".format ( name )
@@ -57,8 +56,16 @@ def create_dataset(
                         single_gallery_shot=False,
                         first_match_break=True )
 
+
+
     partitions = load_pickle ( partition_file )
     im_names = partitions['{}_im_names'.format ( part )]
+    occluded = []
+    for name in im_names:
+      if name.endswith('1'):
+        occluded.append(1)
+      else:
+        occluded.append(0)
 
     if part == 'trainval':
         ids2labels = partitions['trainval_ids2labels']
