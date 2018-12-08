@@ -20,7 +20,7 @@ class TrainSet ( Dataset ):
             ids2labels=None,
             ids_per_batch=None,
             ims_per_id=None,
-            occluded=0,
+            occluded=None,
             **kwargs):
 
         # The im dir of all images
