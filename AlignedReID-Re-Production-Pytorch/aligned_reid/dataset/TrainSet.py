@@ -28,7 +28,6 @@ class TrainSet ( Dataset ):
         self.ids2labels = ids2labels
         self.ids_per_batch = ids_per_batch
         self.ims_per_id = ims_per_id
-        self.occluded = occluded
 
         im_ids = [parse_im_name ( name, 'id' ) for name in im_names]
         self.ids_to_im_inds = defaultdict ( list )
