@@ -20,7 +20,6 @@ class TrainSet ( Dataset ):
             ids2labels=None,
             ids_per_batch=None,
             ims_per_id=None,
-            occluded=None,
             **kwargs):
 
         # The im dir of all images
@@ -57,8 +56,7 @@ class TrainSet ( Dataset ):
                for name in im_names]
         ims, mirrored = zip ( *[self.pre_process_im ( im ) for im in ims] )
         labels = [self.ids2labels[self.ids[ptr]] for _ in range ( self.ims_per_id )]
-        occluded = [self.occluded[ind] for ind in inds]
-        return ims, im_names, labels, mirrored, occluded
+        return ims, im_names, labels, mirrored
 
     def next_batch(self):
         """Next batch of images and labels.
@@ -73,7 +71,7 @@ class TrainSet ( Dataset ):
         if self.epoch_done and self.shuffle:
             np.random.shuffle ( self.ids )
         samples, self.epoch_done = self.prefetcher.next_batch ()
-        im_list, im_names, labels, mirrored, occluded = zip ( *samples )
+        im_list, im_names, labels, mirrored = zip ( *samples )
         # t = time.time()
         # Transform the list into a numpy array with shape [N, ...]
         ims = np.stack ( np.concatenate ( im_list ) )
@@ -81,4 +79,4 @@ class TrainSet ( Dataset ):
         im_names = np.concatenate ( im_names )
         labels = np.concatenate ( labels )
         mirrored = np.concatenate ( mirrored )
-        return ims, im_names, labels, mirrored, self.epoch_done, occluded
+        return ims, im_names, labels, mirrored, self.epoch_done
