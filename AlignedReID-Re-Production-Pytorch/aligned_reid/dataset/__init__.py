@@ -40,8 +40,8 @@ def create_dataset(
     elif name == 'combined':
         assert part in ['trainval'], \
             "Only trainval part of the combined dataset is available now."
-        im_dir = ospeu ( '~/Dataset/market1501_cuhk03_duke/trainval_images' )
-        partition_file = ospeu ( '~/Dataset/market1501_cuhk03_duke/partitions.pkl' )
+        im_dir = ospeu ( '~/Dataset/Combined/trainval_images' )
+        partition_file = ospeu ( '~/Dataset/Combined/partitions.pkl' )
 
     elif name == 'market1501_occluded':
         im_dir = ospeu ( '~/Dataset/market1501_occluded/images' )
