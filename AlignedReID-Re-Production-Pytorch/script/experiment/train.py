@@ -446,7 +446,7 @@ def main():
       ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
       occluded_ims = get_occluded_images(im_names)
 
-      #pdb.set_trace()
+      pdb.set_trace()
 
       ims_var = Variable(TVT(torch.from_numpy(ims).float()))
       labels_t = TVT(torch.from_numpy(labels).long())
@@ -456,7 +456,7 @@ def main():
 
       global_feat, local_feat, logits_id, logits_obc = model_w(ims_var)
 
-      g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat, occluded_ims = global_loss(
+      g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat, _ = global_loss(
         im_names, g_tri_loss, global_feat, labels_t,
         normalize_feature=cfg.normalize_feature)
 
@@ -466,11 +466,11 @@ def main():
         l_loss = 0
       elif cfg.local_dist_own_hard_sample:
         # Let local distance find its own hard samples.
-        l_loss, l_dist_ap, l_dist_an, _, occluded_ims = local_loss(
+        l_loss, l_dist_ap, l_dist_an, _, _ = local_loss(
           im_names, l_tri_loss, local_feat, None, None, labels_t,
           normalize_feature=cfg.normalize_feature)
       else:
-        l_loss, l_dist_ap, l_dist_an, occluded_ims = local_loss(
+        l_loss, l_dist_ap, l_dist_an, _ = local_loss(
           im_names, l_tri_loss, local_feat, p_inds, n_inds, labels_t,
           normalize_feature=cfg.normalize_feature)
 

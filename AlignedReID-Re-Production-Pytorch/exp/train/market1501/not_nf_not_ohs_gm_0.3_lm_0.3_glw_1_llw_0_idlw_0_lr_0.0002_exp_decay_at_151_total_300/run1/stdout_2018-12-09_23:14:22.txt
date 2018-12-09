@@ -1,0 +1,104 @@
+------------------------------------------------------------
+cfg.__dict__
+{'base_lr': 0.0002,
+ 'ckpt_file': 'exp/train/market1501/not_nf_not_ohs_gm_0.3_lm_0.3_glw_1_llw_0_idlw_0_lr_0.0002_exp_decay_at_151_total_300/run1/ckpt.pth',
+ 'crop_prob': 0,
+ 'crop_ratio': 1,
+ 'dataset': 'market1501',
+ 'exp_decay_at_epoch': 151,
+ 'exp_dir': 'exp/train/market1501/not_nf_not_ohs_gm_0.3_lm_0.3_glw_1_llw_0_idlw_0_lr_0.0002_exp_decay_at_151_total_300/run1',
+ 'g_loss_weight': 1.0,
+ 'global_margin': 0.3,
+ 'id_loss_weight': 0.0,
+ 'ids_per_batch': 32,
+ 'im_mean': [0.486, 0.459, 0.408],
+ 'im_std': [0.229, 0.224, 0.225],
+ 'ims_per_id': 4,
+ 'l_loss_weight': 0.0,
+ 'local_conv_out_channels': 128,
+ 'local_dist_own_hard_sample': False,
+ 'local_margin': 0.3,
+ 'log_steps': 10000000000.0,
+ 'log_to_file': True,
+ 'lr_decay_type': 'exp',
+ 'model_weight_file': '',
+ 'normalize_feature': False,
+ 'obc_loss_weight': 0.2,
+ 'only_test': False,
+ 'prefetch_threads': 2,
+ 'resize_h_w': (256, 128),
+ 'resume': False,
+ 'run': 1,
+ 'scale_im': True,
+ 'seed': None,
+ 'staircase_decay_at_epochs': (101, 201),
+ 'staircase_decay_multiply_factor': 0.1,
+ 'stderr_file': 'exp/train/market1501/not_nf_not_ohs_gm_0.3_lm_0.3_glw_1_llw_0_idlw_0_lr_0.0002_exp_decay_at_151_total_300/run1/stderr_2018-12-09_23:14:22.txt',
+ 'stdout_file': 'exp/train/market1501/not_nf_not_ohs_gm_0.3_lm_0.3_glw_1_llw_0_idlw_0_lr_0.0002_exp_decay_at_151_total_300/run1/stdout_2018-12-09_23:14:22.txt',
+ 'sys_device_ids': (0,),
+ 'test_batch_size': 32,
+ 'test_final_batch': True,
+ 'test_mirror_type': None,
+ 'test_set_kwargs': {'batch_dims': 'NCHW',
+                     'batch_size': 32,
+                     'final_batch': True,
+                     'im_mean': [0.486, 0.459, 0.408],
+                     'im_std': [0.229, 0.224, 0.225],
+                     'mirror_type': None,
+                     'name': 'market1501',
+                     'num_prefetch_threads': 2,
+                     'part': 'test',
+                     'prng': <module 'numpy.random' from '/usr/local/lib/python2.7/dist-packages/numpy/random/__init__.pyc'>,
+                     'resize_h_w': (256, 128),
+                     'scale': True,
+                     'shuffle': False},
+ 'test_shuffle': False,
+ 'total_epochs': 300,
+ 'train_final_batch': False,
+ 'train_mirror_type': 'random',
+ 'train_set_kwargs': {'batch_dims': 'NCHW',
+                      'crop_prob': 0,
+                      'crop_ratio': 1,
+                      'final_batch': False,
+                      'ids_per_batch': 32,
+                      'im_mean': [0.486, 0.459, 0.408],
+                      'im_std': [0.229, 0.224, 0.225],
+                      'ims_per_id': 4,
+                      'mirror_type': 'random',
+                      'name': 'market1501',
+                      'num_prefetch_threads': 2,
+                      'part': 'trainval',
+                      'prng': <module 'numpy.random' from '/usr/local/lib/python2.7/dist-packages/numpy/random/__init__.pyc'>,
+                      'resize_h_w': (256, 128),
+                      'scale': True,
+                      'shuffle': True},
+ 'train_shuffle': True,
+ 'trainset_part': 'trainval',
+ 'weight_decay': 0.0005}
+------------------------------------------------------------
+/home/ubuntu/Dataset/market1501/partitions.pkl
+----------------------------------------
+00001500_0006_00000001.jpg trainval set
+----------------------------------------
+NO. Images: 12936
+NO. IDs: 751
+----------------------------------------
+/home/ubuntu/Dataset/market1501/partitions.pkl
+----------------------------------------
+00001501_0006_00000001.jpg test set
+----------------------------------------
+NO. Images: 31969
+NO. IDs: 751
+NO. Query Images: 3368
+NO. Gallery Images: 15913
+NO. Multi-query Images: 12688
+----------------------------------------
+('Trainset im_list shape:', 32)
+('TrainSet-post stack image shape', (3, 256, 128), 128)
+(128, 64, 3)
+(128, 64, 3)
+> /home/ubuntu/CS230-Project/AlignedReID-Re-Production-Pytorch/script/experiment/train.py(451)main()
+-> ims_var = Variable(TVT(torch.from_numpy(ims).float()))
+(Pdb) (128, 3, 256, 128)
+(Pdb) (128, 3, 256, 128)
+(Pdb) 

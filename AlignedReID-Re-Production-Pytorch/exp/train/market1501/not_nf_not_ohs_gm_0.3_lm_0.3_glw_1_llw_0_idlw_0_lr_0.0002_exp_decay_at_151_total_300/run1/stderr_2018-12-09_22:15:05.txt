@@ -1,0 +1,16 @@
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_id.weight, std=0.001)
+./aligned_reid/model/Model.py:22: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_id.bias, 0)
+./aligned_reid/model/Model.py:23: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_obc.weight, std=0.001)
+./aligned_reid/model/Model.py:24: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_obc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 648, in <module>
+    main()
+  File "script/experiment/train.py", line 447, in main
+    occluded_ims = get_occluded_images(im_names)
+  File "./aligned_reid/model/loss.py", line 201, in get_occluded_images
+    occluded_images, mirrored = zip ( *[pre_process_im ( im ) for im in ims] )
+NameError: global name 'ims' is not defined

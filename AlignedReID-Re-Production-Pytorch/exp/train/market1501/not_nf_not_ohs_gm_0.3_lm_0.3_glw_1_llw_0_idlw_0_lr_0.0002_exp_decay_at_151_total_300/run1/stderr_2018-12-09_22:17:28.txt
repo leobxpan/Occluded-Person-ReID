@@ -1,0 +1,26 @@
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_id.weight, std=0.001)
+./aligned_reid/model/Model.py:22: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_id.bias, 0)
+./aligned_reid/model/Model.py:23: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_obc.weight, std=0.001)
+./aligned_reid/model/Model.py:24: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_obc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 648, in <module>
+    main()
+  File "script/experiment/train.py", line 451, in main
+    ims_var = Variable(TVT(torch.from_numpy(ims).float()))
+  File "script/experiment/train.py", line 451, in main
+    ims_var = Variable(TVT(torch.from_numpy(ims).float()))
+  File "/usr/lib/python2.7/bdb.py", line 49, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python2.7/bdb.py", line 67, in dispatch_line
+    self.user_line(frame)
+  File "/usr/lib/python2.7/pdb.py", line 158, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python2.7/pdb.py", line 210, in interaction
+    self.cmdloop()
+  File "/usr/lib/python2.7/cmd.py", line 130, in cmdloop
+    line = raw_input(self.prompt)
+KeyboardInterrupt
