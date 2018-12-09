@@ -3,6 +3,7 @@ import torch
 import os
 import numpy as np
 from PIL import Image
+from ..dataset.PreProcessImage import PreProcessIm
 
 
 def normalize(x, axis=-1):
@@ -196,8 +197,13 @@ def get_occluded_images(im_names, im_dir = '/home/ubuntu/Dataset/market1501/imag
 
   occluded_images = [np.asarray ( Image.open ( os.path.join ( occluded_dir, name ) ) )
                      for name in im_names]
-  occluded_images = np.stack(np.concatenate(occluded_images))
-
+  pre_process_im = PreProcessIm(resize_h_w = (256, 128))   
+  occluded_images, mirrored = zip ( *[pre_process_im ( im ) for im in occluded_images] )
+  #print(occluded_images[0].shape)
+  #print(len(occluded_images))
+  occluded_images = np.array(occluded_images)
+  #print(occluded_images[0].shape)
+  #print(len(occluded_images))
   return occluded_images
 
 

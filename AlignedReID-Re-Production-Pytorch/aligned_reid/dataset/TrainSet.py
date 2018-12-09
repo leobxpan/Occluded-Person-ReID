@@ -53,7 +53,9 @@ class TrainSet ( Dataset ):
         im_names = [self.im_names[ind] for ind in inds]
         ims = [np.asarray ( Image.open ( osp.join ( self.im_dir, name ) ) )
                for name in im_names]
+  #      print("TrainSet-First read of image shape", ims[0].shape, len(ims))
         ims, mirrored = zip ( *[self.pre_process_im ( im ) for im in ims] )
+ #       print("TrainSet-After pre-process image shape", ims[0].shape, len(ims))
         labels = [self.ids2labels[self.ids[ptr]] for _ in range ( self.ims_per_id )]
         return ims, im_names, labels, mirrored
 
@@ -73,6 +75,7 @@ class TrainSet ( Dataset ):
         im_list, im_names, labels, mirrored = zip ( *samples )
         # t = time.time()
         # Transform the list into a numpy array with shape [N, ...]
+#        print("TrainSet im_list:", im_list[0].shape)
         ims = np.stack ( np.concatenate ( im_list ) )
         # print '---stacking time {:.4f}s'.format(time.time() - t)
         im_names = np.concatenate ( im_names )
