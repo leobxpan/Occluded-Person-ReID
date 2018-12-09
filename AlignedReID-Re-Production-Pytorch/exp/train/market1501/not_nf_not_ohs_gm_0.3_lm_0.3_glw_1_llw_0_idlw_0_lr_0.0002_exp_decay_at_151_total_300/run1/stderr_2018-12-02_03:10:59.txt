@@ -1,0 +1,24 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 633, in <module>
+    main()
+  File "script/experiment/train.py", line 363, in main
+    TMO(modules_optims)
+  File "./aligned_reid/utils/utils.py", line 130, in __call__
+    may_transfer_modules_optims(modules_and_or_optims, self.device_id)
+  File "./aligned_reid/utils/utils.py", line 107, in may_transfer_modules_optims
+    item.cuda(device=device_id)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 258, in cuda
+    return self._apply(lambda t: t.cuda(device))
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 185, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 185, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 191, in _apply
+    param.data = fn(param.data)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 258, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+RuntimeError: cuda runtime error (30) : unknown error at /pytorch/aten/src/THC/THCGeneral.cpp:74

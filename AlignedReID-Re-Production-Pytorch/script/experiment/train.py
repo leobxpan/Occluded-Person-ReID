@@ -15,12 +15,14 @@ import os.path as osp
 from tensorboardX import SummaryWriter
 import numpy as np
 import argparse
+import pdb
 
 from aligned_reid.dataset import create_dataset
 from aligned_reid.model.Model import Model
 from aligned_reid.model.TripletLoss import TripletLoss
 from aligned_reid.model.loss import global_loss
 from aligned_reid.model.loss import local_loss
+from aligned_reid.model.loss import get_occluded_images 
 
 from aligned_reid.utils.utils import time_str
 from aligned_reid.utils.utils import str2bool
@@ -63,9 +65,10 @@ class Config(object):
                         type=str2bool, default=False)
     parser.add_argument('-gm', '--global_margin', type=float, default=0.3)
     parser.add_argument('-lm', '--local_margin', type=float, default=0.3)
-    parser.add_argument('-glw', '--g_loss_weight', type=float, default=1.)
+    parser.add_argument('-glw', '--g_loss_weight', type=float, default=0.)
     parser.add_argument('-llw', '--l_loss_weight', type=float, default=0.)
-    parser.add_argument('-idlw', '--id_loss_weight', type=float, default=0.)
+    parser.add_argument('-idlw', '--id_loss_weight', type=float, default=.8)
+    parser.add_argument('-obclw', '--obc_loss_weight', type=float, default=.2)
 
     parser.add_argument('--only_test', type=str2bool, default=False)
     parser.add_argument('--resume', type=str2bool, default=False)
@@ -183,7 +186,8 @@ class Config(object):
 
     # Identification Loss weight
     self.id_loss_weight = args.id_loss_weight
-
+    # OBC loss weight
+    self.obc_loss_weight = args.obc_loss_weight
     # global loss weight
     self.g_loss_weight = args.g_loss_weight
     # local loss weight
@@ -340,6 +344,7 @@ def main():
   #############################
 
   id_criterion = nn.CrossEntropyLoss()
+  obc_criterion = nn.CrossEntropyLoss()
   g_tri_loss = TripletLoss(margin=cfg.global_margin)
   l_tri_loss = TripletLoss(margin=cfg.local_margin)
 
@@ -439,12 +444,17 @@ def main():
       step_st = time.time()
 
       ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
+      occluded_ims = get_occluded_images(im_names)
+
+      #pdb.set_trace()
 
       ims_var = Variable(TVT(torch.from_numpy(ims).float()))
       labels_t = TVT(torch.from_numpy(labels).long())
       labels_var = Variable(labels_t)
 
-      global_feat, local_feat, logits = model_w(ims_var)
+      #occluded_ims_var = Variable(TVT(torch.))
+
+      global_feat, local_feat, logits_id, logits_obc = model_w(ims_var)
 
       g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat, occluded_ims = global_loss(
         im_names, g_tri_loss, global_feat, labels_t,
@@ -466,7 +476,11 @@ def main():
 
       id_loss = 0
       if cfg.id_loss_weight > 0:
-        id_loss = id_criterion(logits, labels_var)
+        id_loss = id_criterion(logits_id, labels_var)
+
+      #obc_loss = 0
+      #if cfg.obc_loss_weight > 0:
+      #  obc_loss = obc_criterion(logits_obc, labels_obc_var)
 
       loss = g_loss * cfg.g_loss_weight \
              + l_loss * cfg.l_loss_weight \
