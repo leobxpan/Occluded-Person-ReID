@@ -131,7 +131,7 @@ def batch_local_dist(x, y):
     return dist
 
 
-def hard_example_mining(im_names, dist_mat, labels, return_inds=False):
+def hard_example_mining (dist_mat, labels, return_inds=False):
     """For each anchor, find the hardest positive and negative sample.
   Args:
     dist_mat: pytorch Variable, pair wise distance between samples, shape [N, N]
@@ -168,9 +168,6 @@ def hard_example_mining(im_names, dist_mat, labels, return_inds=False):
     dist_ap = dist_ap.squeeze ( 1 )
     dist_an = dist_an.squeeze ( 1 )
 
-    # Get occluded images
-    occluded_ims = get_occluded_images ( im_names)
-
     if return_inds:
         # shape [N, N]
         ind = (labels.new ().resize_as_ ( labels )
@@ -186,7 +183,7 @@ def hard_example_mining(im_names, dist_mat, labels, return_inds=False):
         n_inds = n_inds.squeeze ( 1 )
         return dist_ap, dist_an, p_inds, n_inds, occluded_ims
 
-    return dist_ap, dist_an, occluded_ims
+    return dist_ap, dist_an
 
 
 
@@ -233,7 +230,7 @@ def global_loss(im_names, tri_loss, global_feat, labels, normalize_feature=True)
         global_feat = normalize ( global_feat, axis=-1 )
     # shape [N, N]
     dist_mat = euclidean_dist ( global_feat, global_feat )
-    dist_ap, dist_an, p_inds, n_inds = hard_example_mining ( im_names,
+    dist_ap, dist_an, p_inds, n_inds = hard_example_mining (
                                                             dist_mat, labels, return_inds=True )
     # Get occluded images
     occluded_ims = get_occluded_images ( im_names)
@@ -285,7 +282,7 @@ def local_loss(
         local_feat = normalize ( local_feat, axis=-1 )
     if p_inds is None or n_inds is None:
         dist_mat = local_dist ( local_feat, local_feat )
-        dist_ap, dist_an, occluded_ims = hard_example_mining (im_names, dist_mat, labels, return_inds=False )
+        dist_ap, dist_an, occluded_ims = hard_example_mining (dist_mat, labels, return_inds=False )
         loss = tri_loss ( dist_ap, dist_an )
         return loss, dist_ap, dist_an, dist_mat, occluded_ims
     else:
