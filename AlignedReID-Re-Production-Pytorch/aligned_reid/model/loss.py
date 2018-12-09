@@ -181,7 +181,7 @@ def hard_example_mining (dist_mat, labels, return_inds=False):
         # shape [N]
         p_inds = p_inds.squeeze ( 1 )
         n_inds = n_inds.squeeze ( 1 )
-        return dist_ap, dist_an, p_inds, n_inds, occluded_ims
+        return dist_ap, dist_an, p_inds, n_inds
 
     return dist_ap, dist_an
 
