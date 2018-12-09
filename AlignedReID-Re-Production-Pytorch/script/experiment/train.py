@@ -446,20 +446,20 @@ def main():
 
       global_feat, local_feat, logits = model_w(ims_var)
 
-      g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat = global_loss(
-        g_tri_loss, global_feat, labels_t,
+      g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat, occluded_ims = global_loss(
+        im_names, g_tri_loss, global_feat, labels_t,
         normalize_feature=cfg.normalize_feature)
 
       if cfg.l_loss_weight == 0:
         l_loss = 0
       elif cfg.local_dist_own_hard_sample:
         # Let local distance find its own hard samples.
-        l_loss, l_dist_ap, l_dist_an, _ = local_loss(
-          l_tri_loss, local_feat, None, None, labels_t,
+        l_loss, l_dist_ap, l_dist_an, _, occluded_ims = local_loss(
+          im_names, l_tri_loss, local_feat, None, None, labels_t,
           normalize_feature=cfg.normalize_feature)
       else:
-        l_loss, l_dist_ap, l_dist_an = local_loss(
-          l_tri_loss, local_feat, p_inds, n_inds, labels_t,
+        l_loss, l_dist_ap, l_dist_an, occluded_ims = local_loss(
+          im_names, l_tri_loss, local_feat, p_inds, n_inds, labels_t,
           normalize_feature=cfg.normalize_feature)
 
       id_loss = 0
