@@ -450,6 +450,8 @@ def main():
         im_names, g_tri_loss, global_feat, labels_t,
         normalize_feature=cfg.normalize_feature)
 
+      print("Example Occluded Images from global loss", occluded_ims[0])
+
       if cfg.l_loss_weight == 0:
         l_loss = 0
       elif cfg.local_dist_own_hard_sample:

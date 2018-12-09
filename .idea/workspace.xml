@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="466" column="43" selection-start-line="466" selection-start-column="43" selection-end-line="466" selection-end-column="43" />
+            <state relative-caret-position="448">
+              <caret line="455" column="18" lean-forward="true" selection-start-line="455" selection-start-column="18" selection-end-line="455" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -58,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="280" column="25" lean-forward="true" selection-start-line="280" selection-start-column="25" selection-end-line="280" selection-end-column="25" />
+            <state relative-caret-position="308">
+              <caret line="272" column="17" lean-forward="true" selection-start-line="272" selection-start-column="17" selection-end-line="272" selection-end-column="17" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -194,8 +193,8 @@
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Prefetcher.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" />
-        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" />
+        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
       </list>
     </option>
   </component>
@@ -415,12 +414,12 @@
       <updated>1541474259095</updated>
       <workItem from="1543697502482" duration="11317000" />
       <workItem from="1543717063087" duration="3526000" />
-      <workItem from="1544284318149" duration="9618000" />
+      <workItem from="1544284318149" duration="9672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24463000" />
+    <option name="totallyTimeSpent" value="24517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -703,6 +702,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-583">
@@ -713,27 +719,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py">
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="308">
+          <caret line="272" column="17" lean-forward="true" selection-start-line="272" selection-start-column="17" selection-end-line="272" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="466" column="43" selection-start-line="466" selection-start-column="43" selection-end-line="466" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="280" column="25" lean-forward="true" selection-start-line="280" selection-start-column="25" selection-end-line="280" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="448">
+          <caret line="455" column="18" lean-forward="true" selection-start-line="455" selection-start-column="18" selection-end-line="455" selection-end-column="18" />
         </state>
       </provider>
     </entry>
