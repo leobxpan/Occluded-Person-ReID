@@ -198,6 +198,8 @@ def get_occluded_images(im_names, im_dir = '/home/ubuntu/Dataset/market1501/imag
 
   occluded_images = [np.asarray ( Image.open ( os.path.join ( occluded_dir, name ) ) )
                      for name in im_names]
+  occluded_images = np.stack(np.concatenate(occluded_images))
+
   return occluded_images
 
 

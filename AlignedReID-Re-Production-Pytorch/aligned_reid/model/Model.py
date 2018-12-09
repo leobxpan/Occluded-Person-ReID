@@ -16,9 +16,12 @@ class Model(nn.Module):
     self.local_relu = nn.ReLU(inplace=True)
 
     if num_classes is not None:
-      self.fc = nn.Linear(planes, num_classes)
-      init.normal(self.fc.weight, std=0.001)
-      init.constant(self.fc.bias, 0)
+      self.fc_id = nn.Linear(planes, num_classes)
+      self.fc_obc = nn.Linear(planes, 2)
+      init.normal(self.fc_id.weight, std=0.001)
+      init.constant(self.fc_id.bias, 0)
+      init.normal(self.fc_obc.weight, std=0.001)
+      init.constant(self.fc_obc.bias, 0)
 
   def forward(self, x):
     """
@@ -37,8 +40,10 @@ class Model(nn.Module):
     # shape [N, H, c]
     local_feat = local_feat.squeeze(-1).permute(0, 2, 1)
 
-    if hasattr(self, 'fc'):
-      logits = self.fc(global_feat)
-      return global_feat, local_feat, logits
+    if hasattr(self, 'fc_id'):
+      logits_id = self.fc_id(global_feat)
+      logits_obc = self.fc_obc(global_feat)
+
+      return global_feat, local_feat, logits_id, logits_obc
 
     return global_feat, local_feat
