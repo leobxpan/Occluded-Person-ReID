@@ -185,8 +185,6 @@ def hard_example_mining (dist_mat, labels, return_inds=False):
 
     return dist_ap, dist_an
 
-
-
 def get_occluded_images(im_names, im_dir = '/home/ubuntu/Dataset/market1501/images'):
   """
   Returns a list of occluded images given image names and image directory
