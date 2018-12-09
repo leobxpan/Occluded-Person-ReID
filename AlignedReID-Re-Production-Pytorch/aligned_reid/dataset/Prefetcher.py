@@ -179,7 +179,7 @@ class Prefetcher(object):
       else:
         self.ptr += 1
         sample = self.enqueuer.queue.get()
-        print sample
+        #print sample
         # print('queue size {}'.format(self.enqueuer.queue.qsize()))
         samples.append(sample)
     # print 'queue size: {}'.format(self.enqueuer.queue.qsize())
