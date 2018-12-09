@@ -106,3 +106,4 @@ venv.bak/
 
 # ckpt files
 ./AlignedReID-Re-Production-Pytorch/exp/train_ml
+*.pth
