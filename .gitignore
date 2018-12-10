@@ -105,6 +105,4 @@ venv.bak/
 .mypy_cache/
 
 # ckpt files
-./AlignedReID-Re-Production-Pytorch/exp/train_ml
-./AlignedReID-Re-Production-Pytorch/exp/train/market1501/
-*.pth
+./AlignedReID-Re-Production-Pytorch/exp/

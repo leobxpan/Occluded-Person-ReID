@@ -240,6 +240,7 @@ class Config(object):
         'glw_{}_'.format(tfs(self.g_loss_weight)) +
         'llw_{}_'.format(tfs(self.l_loss_weight)) +
         'idlw_{}_'.format(tfs(self.id_loss_weight)) +
+        'obclw_{}_'.format(tfs(self.obc_loss_weight)) +
         'lr_{}_'.format(tfs(self.base_lr)) +
         '{}_'.format(self.lr_decay_type) +
         ('decay_at_{}_'.format(self.exp_decay_at_epoch)
@@ -446,15 +447,20 @@ def main():
       ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
       occluded_ims = get_occluded_images(im_names)
 
-      pdb.set_trace()
-
       ims_var = Variable(TVT(torch.from_numpy(ims).float()))
-      labels_t = TVT(torch.from_numpy(labels).long())
+      occluded_ims_var = Variable(TVT(torch.from_numpy(occluded_ims).float()))
+      
+      labels_t = TVT(torch.from_numpy(labels).long())           # Identity labels, same for occluded and unoccluded images
       labels_var = Variable(labels_t)
 
-      #occluded_ims_var = Variable(TVT(torch.))
+      obc_occluded_labels = np.zeros(labels.shape)              # OBC label, 0 for occluded images and 1 for unoccluded image
+      obc_unoccluded_labels = np.ones(labels.shape) 
+      
+      obc_occluded_labels_var = Variable(TVT(torch.from_numpy(obc_occluded_labels).long()))
+      obc_unoccluded_labels_var = Variable(TVT(torch.from_numpy(obc_unoccluded_labels).long()))
 
       global_feat, local_feat, logits_id, logits_obc = model_w(ims_var)
+      global_feat_occluded, local_feat_occluded, logits_id_occluded, logits_obc_occluded = model_w(occluded_ims_var)
 
       g_loss, p_inds, n_inds, g_dist_ap, g_dist_an, g_dist_mat, _ = global_loss(
         im_names, g_tri_loss, global_feat, labels_t,
@@ -476,15 +482,16 @@ def main():
 
       id_loss = 0
       if cfg.id_loss_weight > 0:
-        id_loss = id_criterion(logits_id, labels_var)
+        id_loss = id_criterion(logits_id, labels_var) + id_criterion(logits_obc_occluded, labels_var)
 
-      #obc_loss = 0
-      #if cfg.obc_loss_weight > 0:
-      #  obc_loss = obc_criterion(logits_obc, labels_obc_var)
+      obc_loss = 0
+      if cfg.obc_loss_weight > 0:
+        obc_loss = obc_criterion(logits_obc, obc_unoccluded_labels_var) + obc_criterion(logits_obc_occluded, obc_occluded_labels_var)
 
       loss = g_loss * cfg.g_loss_weight \
              + l_loss * cfg.l_loss_weight \
-             + id_loss * cfg.id_loss_weight
+             + id_loss * cfg.id_loss_weight \
+             + obc_loss * cfg.obc_loss_weight
 
       optimizer.zero_grad()
       loss.backward()
