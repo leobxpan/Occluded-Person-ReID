@@ -105,4 +105,4 @@ venv.bak/
 .mypy_cache/
 
 # ckpt files
-./AlignedReID-Re-Production-Pytorch/exp/
+AlignedReID-Re-Production-Pytorch/exp/
