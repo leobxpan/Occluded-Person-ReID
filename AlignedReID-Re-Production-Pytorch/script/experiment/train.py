@@ -482,7 +482,7 @@ def main():
 
       id_loss = 0
       if cfg.id_loss_weight > 0:
-        id_loss = id_criterion(logits_id, labels_var) + id_criterion(logits_obc_occluded, labels_var)
+        id_loss = id_criterion(logits_id, labels_var) + id_criterion(logits_id_occluded, labels_var)
 
       obc_loss = 0
       if cfg.obc_loss_weight > 0:
