@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 632, in <module>
+    main()
+  File "script/experiment/train.py", line 316, in main
+    train_set = create_dataset(**cfg.train_set_kwargs)
+  File "./aligned_reid/dataset/__init__.py", line 77, in create_dataset
+    **kwargs)
+  File "./aligned_reid/dataset/TrainSet.py", line 31, in __init__
+    self.occluded = occluded
+NameError: global name 'occluded' is not defined

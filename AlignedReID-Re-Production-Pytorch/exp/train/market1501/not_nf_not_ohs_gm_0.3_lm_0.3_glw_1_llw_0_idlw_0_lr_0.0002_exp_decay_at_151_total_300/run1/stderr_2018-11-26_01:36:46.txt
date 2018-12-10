@@ -1,0 +1,16 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 632, in <module>
+    main()
+  File "script/experiment/train.py", line 447, in main
+    global_feat, local_feat, logits = model_w(ims_var)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/parallel/data_parallel.py", line 121, in forward
+    return self.module(*inputs[0], **kwargs[0])
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+TypeError: forward() takes exactly 3 arguments (2 given)

@@ -1,0 +1,12 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 634, in <module>
+    main()
+  File "script/experiment/train.py", line 477, in main
+    optimizer.step()
+  File "/usr/local/lib/python2.7/dist-packages/torch/optim/adam.py", line 92, in step
+    exp_avg.mul_(beta1).add_(1 - beta1, grad)
+KeyboardInterrupt

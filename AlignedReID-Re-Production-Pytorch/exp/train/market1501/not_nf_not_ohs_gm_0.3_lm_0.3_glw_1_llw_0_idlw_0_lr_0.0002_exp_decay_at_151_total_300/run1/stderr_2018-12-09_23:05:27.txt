@@ -1,0 +1,16 @@
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_id.weight, std=0.001)
+./aligned_reid/model/Model.py:22: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_id.bias, 0)
+./aligned_reid/model/Model.py:23: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc_obc.weight, std=0.001)
+./aligned_reid/model/Model.py:24: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc_obc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 648, in <module>
+    main()
+  File "script/experiment/train.py", line 446, in main
+    ims, im_names, labels, mirrored, epoch_done = train_set.next_batch()
+  File "./aligned_reid/dataset/TrainSet.py", line 78, in next_batch
+    print("Trainset im_list shape:", im_list.shape, len(im_list))
+AttributeError: 'tuple' object has no attribute 'shape'

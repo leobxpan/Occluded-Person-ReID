@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 636, in <module>
+    main()
+  File "script/experiment/train.py", line 320, in main
+    train_set = create_dataset(**cfg.train_set_kwargs)
+  File "./aligned_reid/dataset/__init__.py", line 78, in create_dataset
+    **kwargs)
+TypeError: type object got multiple values for keyword argument 'occluded'

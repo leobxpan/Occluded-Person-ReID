@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 642, in <module>
+    main()
+  File "script/experiment/train.py", line 338, in main
+    num_classes=len(train_set.ids2labels))
+  File "./aligned_reid/model/Model.py", line 21, in __init__
+    init.normal(self.fc.weight, std=0.001)
+  File "/usr/local/lib/python2.7/dist-packages/torch/nn/modules/module.py", line 518, in __getattr__
+    type(self).__name__, name))
+AttributeError: 'Model' object has no attribute 'fc'

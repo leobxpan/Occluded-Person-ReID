@@ -1,0 +1,14 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 632, in <module>
+    main()
+  File "script/experiment/train.py", line 441, in main
+    ims, im_names, labels, mirrored, epoch_done, occluded = train_set.next_batch()
+  File "./aligned_reid/dataset/TrainSet.py", line 79, in next_batch
+    ims = np.stack ( np.concatenate ( im_list ) )
+  File "/usr/local/lib/python2.7/dist-packages/numpy/core/shape_base.py", line 360, in stack
+    return _nx.concatenate(expanded_arrays, axis=axis, out=out)
+KeyboardInterrupt

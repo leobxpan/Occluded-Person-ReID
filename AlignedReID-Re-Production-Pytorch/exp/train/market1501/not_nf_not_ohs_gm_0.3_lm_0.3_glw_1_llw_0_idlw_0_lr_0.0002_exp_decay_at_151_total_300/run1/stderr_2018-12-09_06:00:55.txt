@@ -1,0 +1,14 @@
+./aligned_reid/model/Model.py:20: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(self.fc.weight, std=0.001)
+./aligned_reid/model/Model.py:21: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  init.constant(self.fc.bias, 0)
+Traceback (most recent call last):
+  File "script/experiment/train.py", line 634, in <module>
+    main()
+  File "script/experiment/train.py", line 451, in main
+    normalize_feature=cfg.normalize_feature)
+  File "./aligned_reid/model/loss.py", line 234, in global_loss
+    dist_mat, labels, return_inds=True )
+  File "./aligned_reid/model/loss.py", line 184, in hard_example_mining
+    return dist_ap, dist_an, p_inds, n_inds, occluded_ims
+NameError: global name 'occluded_ims' is not defined
