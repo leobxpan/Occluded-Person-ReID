@@ -14,7 +14,7 @@ def create_dataset(
         name='market1501',
         part='trainval',
         **kwargs):
-    assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded'], \
+    assert name in ['market1501', 'cuhk03', 'duke', 'combined', 'market1501_occluded', 'market1501_transformed'], \
         "Unsupported Dataset {}".format ( name )
 
     assert part in ['trainval', 'train', 'val', 'test'], \
@@ -26,6 +26,10 @@ def create_dataset(
 
     if name == 'market1501':
         im_dir = ospeu ( '~/Dataset/market1501/images' )
+        partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
+
+    elif name == 'market1501_transformed':
+        im_dir = ospeu ( '~/Dataset/market1501/images/transformed' )
         partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
     elif name == 'cuhk03':
