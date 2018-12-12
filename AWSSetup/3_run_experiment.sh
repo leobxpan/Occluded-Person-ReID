@@ -16,4 +16,4 @@ python script/experiment/train_ml.py \
 --base_lr 2e-4 \
 --lr_decay_type exp \
 --exp_decay_at_epoch 151 \
---total_epochs 1
+--total_epochs 200

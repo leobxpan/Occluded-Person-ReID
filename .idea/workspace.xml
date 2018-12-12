@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +31,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="509" column="6" selection-start-line="509" selection-start-column="6" selection-end-line="509" selection-end-column="6" />
+            <state relative-caret-position="6317">
+              <caret line="473" lean-forward="true" selection-start-line="473" selection-end-line="473" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/SaliencyHeatMaps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-79">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AWSSetup/3_run_experiment.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+            <state>
+              <caret selection-end-line="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -65,18 +76,6 @@
               <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,10 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_</find>
-      <find>labels_t</find>
-      <find>labels</find>
-      <find>ids2labels</find>
       <find>get_sample</find>
       <find>create_dataset</find>
       <find>hard_example_mining</find>
@@ -162,9 +157,13 @@
       <find>global</find>
       <find>def test</find>
       <find>g_tri_loss</find>
-      <find>ranking_loss</find>
       <find>l_tri_loss</find>
       <find>local_feat</find>
+      <find>ranking_loss</find>
+      <find>gp</find>
+      <find>g_loss_meter</find>
+      <find>g_prec_meter</find>
+      <find>g_loss</find>
     </findStrings>
     <replaceStrings>
       <replace>market1501_occluded</replace>
@@ -195,6 +194,7 @@
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Prefetcher.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" />
+        <option value="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
       </list>
     </option>
@@ -242,6 +242,11 @@
               <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
               <item name="AWSSetup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -364,12 +369,12 @@
       <workItem from="1543697502482" duration="11317000" />
       <workItem from="1543717063087" duration="3526000" />
       <workItem from="1544284318149" duration="9984000" />
-      <workItem from="1544580006694" duration="4311000" />
+      <workItem from="1544580006694" duration="5331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29803000" />
+    <option name="totallyTimeSpent" value="30823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -655,19 +660,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AWSSetup/3_run_experiment.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/TripletLoss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AWSSetup/3_run_experiment.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/SaliencyHeatMaps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -684,8 +698,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="509" column="6" selection-start-line="509" selection-start-column="6" selection-end-line="509" selection-end-column="6" />
+        <state relative-caret-position="6317">
+          <caret line="473" lean-forward="true" selection-start-line="473" selection-end-line="473" />
         </state>
       </provider>
     </entry>

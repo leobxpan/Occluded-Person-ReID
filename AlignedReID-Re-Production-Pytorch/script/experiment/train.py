@@ -474,20 +474,6 @@ def main():
 
       g_loss = g_loss + g_loss_oc
 
-      # local loss
-      local_feat_occluded
-      if cfg.l_loss_weight == 0:
-        l_loss_oc = 0
-      elif cfg.local_dist_own_hard_sample:
-        # Let local distance find its own hard samples.
-        l_loss_oc, l_dist_ap_oc, l_dist_an_oc, _, _ = local_loss(
-          im_names, l_tri_loss, local_feat_occluded, None, None, labels_t,
-          normalize_feature=cfg.normalize_feature)
-      else:
-        l_loss_oc, l_dist_ap_oc, l_dist_an_oc, _ = local_loss(
-          im_names, l_tri_loss, local_feat_occluded, p_inds, n_inds, labels_t,
-          normalize_feature=cfg.normalize_feature)
-
       # End
 
       #print("Example Occluded Images from global loss", occluded_ims[0])
@@ -503,10 +489,6 @@ def main():
         l_loss, l_dist_ap, l_dist_an, _ = local_loss(
           im_names, l_tri_loss, local_feat, p_inds, n_inds, labels_t,
           normalize_feature=cfg.normalize_feature)
-
-      # Added for occluded images only
-      l_loss = l_loss + l_loss_oc
-      # End
       
       id_loss = 0
       if cfg.id_loss_weight > 0:
