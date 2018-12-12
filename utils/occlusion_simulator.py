@@ -39,8 +39,21 @@ def occlusion_simulator(image_path, height, width, save_dir, method = 'random', 
             start_width = 0
             width = org_shape[1]
 
+        # Sample a random batch from original image
+        if org_shape[0] > height:
+            bg_start_h = np.random.randint(org_shape[0] - height)
+        else:
+            bg_start_h = 0
+
+        if org_shape[1] > width:
+            bg_start_w = np.random.randint(org_shape[1] - width)
+        else:
+            bg_start_w = 0
+
+        bg_patch = img[bg_start_h : bg_start_h + height, bg_start_w : bg_start_w + width, :]
+        
         # Create the mast
-        mask[start_height: start_height + height, start_width: start_width + width] = np.zeros([height, width, 3])
+        mask[start_height: start_height + height, start_width: start_width + width] = bg_patch#np.zeros([height, width, 3])
 
     elif method == 'fixed':
         # Create mask based on top, bottom or middle areas of size 1/3*height : width
