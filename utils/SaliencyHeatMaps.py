@@ -165,12 +165,14 @@ def load_state_dict(model, src_state_dict):
 
   dest_state_dict = model.state_dict()
   for name, param in src_state_dict.items():
+    name = str.replace(name,"base.","")
     if name not in dest_state_dict:
       continue
-   # if isinstance(param, Parameter):
+    if isinstance(param, Parameter):
        # backwards compatibility for serialized parameters
-    param = param.data
-    dest_state_dict[name].copy_(param)
+        param = param.data
+    if dest_state_dict[name].size() == param.size():
+        dest_state_dict[name].copy_(param)
 
   src_missing = set(dest_state_dict.keys()) - set(src_state_dict.keys())
   if len(src_missing) > 0:
@@ -188,6 +190,10 @@ def load_model():
 
     model = models.resnet50(pretrained=True)
     num_ftrs = model.fc.in_features
+    planes = 2048
+    model.local_conv = nn.Conv2d(planes, 128, 1)
+    model.local_bn = nn.BatchNorm2d(128)
+    model.local_relu = nn.ReLU(inplace=True)
     model.fc = nn.Linear(num_ftrs, 2)
 
     use_gpu = torch.cuda.is_available()
@@ -195,19 +201,18 @@ def load_model():
     if use_gpu:
         model = model.cuda()
     '''  Start Load weights from Align ReId Modified model '''
-    '''
+
     checkpoint = torch.load(
             'model_weight.pth', map_location=lambda storage, loc: storage)
     load_state_dict(model,checkpoint)
-    '''
+
     '''  End Load weights from Align ReId Modified model '''
     model.eval()
 
     return model
 
 if __name__ == '__main__':
-    example_list = ['../input_images/0019_c1s6_027296_00,jpg',
-                    '../input_images/0019_c6s4_002427_00_r2.jpg',
+    example_list = ['../input_images/0019_c6s4_002427_00_r2.jpg',
                     '../input_images/0019_c6s4_002427_00_o.jpg',
                     '../input_images/0019_c5s3_076537_00_r.jpg',
                     '../input_images/0019_c5s3_076537_00_o.jpg',
