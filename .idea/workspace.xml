@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6317">
-              <caret line="473" lean-forward="true" selection-start-line="473" selection-end-line="473" />
+            <state relative-caret-position="509">
+              <caret line="597" column="16" lean-forward="true" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -241,6 +240,24 @@
             <path>
               <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="AlignedReID-Re-Production-Pytorch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="AlignedReID-Re-Production-Pytorch" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="AlignedReID-Re-Production-Pytorch" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="experiment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
               <item name="AWSSetup" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -369,12 +386,12 @@
       <workItem from="1543697502482" duration="11317000" />
       <workItem from="1543717063087" duration="3526000" />
       <workItem from="1544284318149" duration="9984000" />
-      <workItem from="1544580006694" duration="5331000" />
+      <workItem from="1544580006694" duration="5620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30823000" />
+    <option name="totallyTimeSpent" value="31112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -698,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6317">
-          <caret line="473" lean-forward="true" selection-start-line="473" selection-end-line="473" />
+        <state relative-caret-position="509">
+          <caret line="597" column="16" lean-forward="true" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
         </state>
       </provider>
     </entry>

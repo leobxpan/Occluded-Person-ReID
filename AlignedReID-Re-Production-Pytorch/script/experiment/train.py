@@ -425,6 +425,7 @@ def main():
     g_dist_ap_meter = AverageMeter()
     g_dist_an_meter = AverageMeter()
     g_loss_meter = AverageMeter()
+    obc_loss_meter = AverageMeter ()
 
     l_prec_meter = AverageMeter()
     l_m_meter = AverageMeter()
@@ -523,6 +524,7 @@ def main():
       g_dist_ap_meter.update(g_d_ap)
       g_dist_an_meter.update(g_d_an)
       g_loss_meter.update(to_scalar(g_loss))
+      obc_loss_meter.update(to_scalar(obc_loss))
 
       if cfg.l_loss_weight > 0:
         # precision
@@ -588,10 +590,10 @@ def main():
     if cfg.g_loss_weight > 0:
       g_log = (', gp {:.2%}, gm {:.2%}, '
                'gd_ap {:.4f}, gd_an {:.4f}, '
-               'gL {:.4f}'.format(
+               'gL {:.4f}, obcL {:.4f}'.format(
         g_prec_meter.avg, g_m_meter.avg,
         g_dist_ap_meter.avg, g_dist_an_meter.avg,
-        g_loss_meter.avg, ))
+        g_loss_meter.avg, obc_loss_meter.avg))
     else:
       g_log = ''
 
