@@ -630,7 +630,7 @@ def main():
              local_loss=l_loss_meter.avg,
              id_loss=id_loss_meter.avg,
              loss=loss_meter.avg,
-             obc_loss = obc_loss_meter),
+             obc_loss = obc_loss_meter.avg),
         ep)
       writer.add_scalars(
         'tri_precision',
