@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="597" column="16" lean-forward="true" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
+            <state relative-caret-position="260">
+              <caret line="632" column="38" selection-start-line="632" selection-start-column="38" selection-end-line="632" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -386,12 +386,12 @@
       <workItem from="1543697502482" duration="11317000" />
       <workItem from="1543717063087" duration="3526000" />
       <workItem from="1544284318149" duration="9984000" />
-      <workItem from="1544580006694" duration="5620000" />
+      <workItem from="1544580006694" duration="5989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31112000" />
+    <option name="totallyTimeSpent" value="31481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -715,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="597" column="16" lean-forward="true" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
+        <state relative-caret-position="260">
+          <caret line="632" column="38" selection-start-line="632" selection-start-column="38" selection-end-line="632" selection-end-column="38" />
         </state>
       </provider>
     </entry>

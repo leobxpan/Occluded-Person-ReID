@@ -629,7 +629,8 @@ def main():
         dict(global_loss=g_loss_meter.avg,
              local_loss=l_loss_meter.avg,
              id_loss=id_loss_meter.avg,
-             loss=loss_meter.avg, ),
+             loss=loss_meter.avg,
+             obc_loss = obc_loss_meter),
         ep)
       writer.add_scalars(
         'tri_precision',
