@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +17,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="483" column="42" lean-forward="true" selection-start-line="483" selection-start-column="42" selection-end-line="483" selection-end-column="42" />
+            <state relative-caret-position="435">
+              <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TestSet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="264" column="29" lean-forward="true" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -27,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+            <state relative-caret-position="435">
+              <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -37,18 +84,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TestSet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
+            <state relative-caret-position="13">
               <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -58,57 +96,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/dataset_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/occlusion_simulator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="118" column="21" lean-forward="true" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+            <state relative-caret-position="493">
+              <caret line="119" column="56" lean-forward="true" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/dataset/transform_market1501.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="156" column="55" lean-forward="true" selection-start-line="156" selection-start-column="55" selection-end-line="156" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="213" column="21" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,9 +111,21 @@
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/TripletLoss.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,36 +142,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>global_loss</find>
-      <find>local_loss</find>
-      <find>create</find>
-      <find>obc_occluded_labels</find>
-      <find>logits_id_occluded</find>
-      <find>test</find>
-      <find>test_set.set_feat_func(ExtractFeature(model_w, TVT)) </find>
-      <find>eval</find>
-      <find>set_feat_func</find>
-      <find>extract_feat_func</find>
-      <find>q_inds</find>
-      <find>global</find>
-      <find>def test</find>
-      <find>l_tri_loss</find>
-      <find>local_feat</find>
-      <find>ranking_loss</find>
-      <find>gp</find>
-      <find>g_loss_meter</find>
-      <find>g_prec_meter</find>
-      <find>g_loss</find>
       <find>2</find>
       <find>label</find>
       <find>gallery</find>
       <find>marks</find>
       <find>occluded</find>
-      <find>only_test</find>
       <find>g_tri_loss</find>
       <find>cfg</find>
-      <find>Trip</find>
       <find>obc_lo</find>
+      <find>load_state_dict</find>
+      <find>create</find>
+      <find>test_set_kwargs</find>
+      <find>create_data</find>
+      <find>Model</find>
+      <find>global_loss</find>
+      <find>Trip</find>
+      <find>modules_optims</find>
+      <find>save_ckpt</find>
+      <find>dir</find>
+      <find>ckpt_file</find>
+      <find>only_test</find>
+      <find>pickle_file</find>
+      <find>test</find>
+      <find>pickle_path</find>
+      <find>test_set_names</find>
+      <find>create_dataset</find>
+      <find>transformed</find>
+      <find>model_w</find>
+      <find>def test</find>
+      <find>pickle</find>
+      <find>model_weight_file</find>
     </findStrings>
     <replaceStrings>
       <replace>market1501_occluded</replace>
@@ -194,11 +199,11 @@
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/dataset/combine_trainval_sets.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Prefetcher.py" />
-        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" />
         <option value="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" />
+        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" />
+        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" />
         <option value="$PROJECT_DIR$/utils/occlusion_simulator.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
-        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py" />
       </list>
     </option>
   </component>
@@ -272,6 +277,12 @@
               <item name="AlignedReID-Re-Production-Pytorch" type="462c0819:PsiDirectoryNode" />
               <item name="aligned_reid" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS230-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="AlignedReID-Re-Production-Pytorch" type="462c0819:PsiDirectoryNode" />
+              <item name="exp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS230-Project" type="b2602c69:ProjectViewProjectNode" />
@@ -430,13 +441,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37672000" />
+    <option name="totallyTimeSpent" value="43395000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21611722" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21611722" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -449,7 +460,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50030136" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.4106952" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4996986" visible="true" weight="0.2620321" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996986" visible="true" weight="0.2620321" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -565,16 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Python/2.7/lib/python/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2535">
@@ -622,30 +623,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Python/2.7/lib/python/site-packages/torch/nn/parallel/data_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1305">
           <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -699,16 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/TripletLoss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/dataset/transform_market1501.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -716,10 +687,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TrainSet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/occlusion_simulator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="118" column="21" lean-forward="true" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+        <state relative-caret-position="493">
+          <caret line="119" column="56" lean-forward="true" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -728,45 +719,65 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="213" column="21" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="21" />
+        <state relative-caret-position="494">
+          <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/TripletLoss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="483" column="42" lean-forward="true" selection-start-line="483" selection-start-column="42" selection-end-line="483" selection-end-column="42" />
+        <state relative-caret-position="465">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Dataset.py">
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state relative-caret-position="284">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="264" column="29" lean-forward="true" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TestSet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
+        <state relative-caret-position="16">
           <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+        <state relative-caret-position="497">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
         </state>
       </provider>
     </entry>

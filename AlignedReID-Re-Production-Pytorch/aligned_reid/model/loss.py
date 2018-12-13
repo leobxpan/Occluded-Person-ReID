@@ -238,11 +238,8 @@ def global_loss(im_names, tri_loss, global_feat, labels, normalize_feature=True)
     dist_mat = euclidean_dist ( global_feat, global_feat )
     dist_ap, dist_an, p_inds, n_inds = hard_example_mining (
                                                             dist_mat, labels, return_inds=True )
-    # Get occluded images
-    occluded_ims = get_occluded_images ( im_names)
-
     loss = tri_loss ( dist_ap, dist_an )
-    return loss, p_inds, n_inds, dist_ap, dist_an, dist_mat, occluded_ims
+    return loss, p_inds, n_inds, dist_ap, dist_an, dist_mat, None
 
 
 def local_loss(
@@ -282,7 +279,7 @@ def local_loss(
     dist_mat: pytorch Variable, pairwise local distance; shape [N, N]
   """
     # Get occluded images
-    occluded_ims = get_occluded_images ( im_names)
+    occluded_ims = None
 
     if normalize_feature:
         local_feat = normalize ( local_feat, axis=-1 )

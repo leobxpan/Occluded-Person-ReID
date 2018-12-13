@@ -16,6 +16,7 @@ from tensorboardX import SummaryWriter
 import numpy as np
 import argparse
 import pdb
+import os
 
 from aligned_reid.dataset import create_dataset
 from aligned_reid.model.Model import Model
@@ -38,7 +39,7 @@ from aligned_reid.utils.utils import ReDirectSTD
 from aligned_reid.utils.utils import set_seed
 from aligned_reid.utils.utils import adjust_lr_exp
 from aligned_reid.utils.utils import adjust_lr_staircase
-
+import pickle
 
 class Config(object):
   def __init__(self):
@@ -73,6 +74,7 @@ class Config(object):
     parser.add_argument('--only_test', type=str2bool, default=False)
     parser.add_argument('--resume', type=str2bool, default=False)
     parser.add_argument('--exp_dir', type=str, default='')
+    parser.add_argument ( '--pickle_path', type=str, default='' )
     parser.add_argument('--model_weight_file', type=str, default='')
 
     parser.add_argument('--base_lr', type=float, default=2e-4)
@@ -111,6 +113,7 @@ class Config(object):
       self.prefetch_threads = 2
 
     self.dataset = args.dataset
+    self.dataset_2 = "market1501_transformed"
     self.trainset_part = args.trainset_part
 
     # Image Processing
@@ -145,6 +148,15 @@ class Config(object):
       batch_dims='NCHW',
       num_prefetch_threads=self.prefetch_threads)
 
+    dataset2_kwargs = dict (
+      name=self.dataset_2,
+      resize_h_w=self.resize_h_w,
+      scale=self.scale_im,
+      im_mean=self.im_mean,
+      im_std=self.im_std,
+      batch_dims='NCHW',
+      num_prefetch_threads=self.prefetch_threads )
+
     prng = np.random
     if self.seed is not None:
       prng = np.random.RandomState(self.seed)
@@ -171,6 +183,16 @@ class Config(object):
       mirror_type=self.test_mirror_type,
       prng=prng)
     self.test_set_kwargs.update(dataset_kwargs)
+
+    self.test_set_kwargs_2 = dict (
+      part='test',
+      batch_size=self.test_batch_size,
+      final_batch=self.test_final_batch,
+      shuffle=self.test_shuffle,
+      mirror_type=self.test_mirror_type,
+      prng=prng )
+    self.test_set_kwargs_2.update ( dataset2_kwargs )
+
 
     ###############
     # ReID Model  #
@@ -262,8 +284,11 @@ class Config(object):
 
     # Saving model weights and optimizer states, for resuming.
     self.ckpt_file = osp.join(self.exp_dir, 'ckpt.pth')
+    self.pickle_file = osp.join(self.exp_dir, 'model.pk')
+
     # Just for loading a pretrained model; no optimizer states is needed.
     self.model_weight_file = args.model_weight_file
+    self.pickle_path = args.pickle_path
 
 
 class ExtractFeature(object):
@@ -331,6 +356,9 @@ def main():
     test_sets.append(create_dataset(**cfg.test_set_kwargs))
     test_set_names.append(cfg.dataset)
 
+    test_sets.append ( create_dataset ( **cfg.test_set_kwargs_2 ) )
+    test_set_names.append ( cfg.dataset_2 )
+
   ###########
   # Models  #
   ###########
@@ -392,8 +420,12 @@ def main():
         use_local_distance=use_local_distance)
 
   if cfg.only_test:
-    test(load_model_weight=True)
-    return
+    if cfg.pickle_path == '':
+      test(load_model_weight=True)
+      return
+    elif cfg.only_test and cfg.pickle_path != '':
+      modules_optims, model_w, TVT = pickle.load(open(cfg.pickle_path))
+      test(load_model_weight=False)
 
   ############
   # Training #
@@ -656,6 +688,9 @@ def main():
     # save ckpt
     if cfg.log_to_file:
       save_ckpt(modules_optims, ep + 1, 0, cfg.ckpt_file)
+      print("Saving the pickle file of the model...")
+      pickle.dump([modules_optims, model_w, TVT], open(cfg.pickle_file, 'wb'))
+      print ( "Save completed!" )
 
   ########
   # Test #
