@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/utils/occlusion_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/occlusion_simulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="487" column="31" selection-start-line="487" selection-start-column="31" selection-end-line="487" selection-end-column="31" />
+            <state relative-caret-position="183">
+              <caret line="475" column="35" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="475" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -71,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/occlusion_simulator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="120" column="68" selection-start-line="120" selection-start-column="68" selection-end-line="120" selection-end-column="68" />
+            <state relative-caret-position="553">
+              <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -187,13 +187,13 @@
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/Prefetcher.py" />
         <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" />
         <option value="$PROJECT_DIR$/AWSSetup/3_run_experiment.sh" />
-        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
         <option value="$PROJECT_DIR$/utils/occlusion_simulator.py" />
+        <option value="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="53" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>
@@ -401,15 +401,15 @@
       <workItem from="1543717063087" duration="3526000" />
       <workItem from="1544284318149" duration="9984000" />
       <workItem from="1544580006694" duration="6138000" />
-      <workItem from="1544673139564" duration="3394000" />
+      <workItem from="1544673139564" duration="3841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35281000" />
+    <option name="totallyTimeSpent" value="35728000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21611722" />
@@ -702,13 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="487" column="31" selection-start-line="487" selection-start-column="31" selection-end-line="487" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -738,11 +731,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/occlusion_simulator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="120" column="68" selection-start-line="120" selection-start-column="68" selection-end-line="120" selection-end-column="68" />
+        <state relative-caret-position="553">
+          <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="475" column="35" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="475" selection-end-column="35" />
         </state>
       </provider>
     </entry>
