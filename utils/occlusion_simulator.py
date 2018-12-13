@@ -117,6 +117,8 @@ if __name__ == "__main__":
                 if mark != 1:
                     occlusion_simulator ( os.path.join ( args.d, im_name ), args.h, args.w, args.m, args.a )
                 else:
+                    if not os.path.exists(os.path.join ( args.d, 'transformed')):
+                        os.mkdir(os.path.join ( args.d, 'transformed'))
                     copyfile ( os.path.join ( args.d, im_name ), os.path.join ( args.d, 'transformed', im_name ) )
             else:
                 occlusion_simulator ( os.path.join ( args.d, im_name ), args.h, args.w, args.m, args.a )
