@@ -29,7 +29,8 @@ def create_dataset(
         partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
     elif name == 'market1501_transformed':
-        im_dir = ospeu ( '~/Dataset/market1501/images/transformed' )
+        im_dir = ospeu ( '~/Dataset/market1501/images' )
+        im_dir_oc = ospeu ( '~/Dataset/market1501/images/transformed' )
         partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
     elif name == 'cuhk03':
@@ -64,30 +65,37 @@ def create_dataset(
 
     partitions = load_pickle ( partition_file )
     im_names = partitions['{}_im_names'.format ( part )]
-    occluded = []
-    for name in im_names:
-      if name.endswith('1'):
-        occluded.append(1)
-      else:
-        occluded.append(0)
 
     if part == 'trainval':
         ids2labels = partitions['trainval_ids2labels']
 
-        ret_set = TrainSet (
-            im_dir=im_dir,
-            im_names=im_names,
-            ids2labels=ids2labels,
-                     **kwargs)
+        if name == 'market1501_transformed':
+            ret_set = TrainSet (
+                im_dir=im_dir_oc,
+                im_names=im_names,
+                ids2labels=ids2labels,
+                         **kwargs)
+        else:
+            ret_set = TrainSet (
+                im_dir=im_dir,
+                im_names=im_names,
+                ids2labels=ids2labels,
+                **kwargs )
 
     elif part == 'train':
         ids2labels = partitions['train_ids2labels']
-
-        ret_set = TrainSet (
-            im_dir=im_dir,
-            im_names=im_names,
-            ids2labels=ids2labels,
-                     **kwargs )
+        if name == 'market1501_transformed':
+            ret_set = TrainSet (
+                im_dir=im_dir_oc,
+                im_names=im_names,
+                ids2labels=ids2labels,
+                         **kwargs)
+        else:
+            ret_set = TrainSet (
+                im_dir=im_dir,
+                im_names=im_names,
+                ids2labels=ids2labels,
+                **kwargs )
 
     elif part == 'val':
         marks = partitions['val_marks']

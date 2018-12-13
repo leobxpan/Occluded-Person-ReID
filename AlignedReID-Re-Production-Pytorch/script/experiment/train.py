@@ -469,11 +469,11 @@ def main():
 
       # To modify global & local loss for occluded images
       # Global loss
-      # g_loss_oc, p_inds_oc, n_inds_oc, g_dist_ap_oc, g_dist_an_oc, g_dist_mat_oc, _ = global_loss (
-      #   im_names, g_tri_loss, global_feat_occluded, labels_t,
-      #   normalize_feature=cfg.normalize_feature )
-      #
-      # g_loss = g_loss + g_loss_oc
+      g_loss_oc, p_inds_oc, n_inds_oc, g_dist_ap_oc, g_dist_an_oc, g_dist_mat_oc, _ = global_loss (
+        im_names, g_tri_loss, global_feat_occluded, labels_t,
+        normalize_feature=cfg.normalize_feature )
+
+      g_loss = g_loss + g_loss_oc
 
       # End
 
