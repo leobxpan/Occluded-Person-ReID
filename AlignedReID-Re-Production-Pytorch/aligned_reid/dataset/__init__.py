@@ -29,8 +29,7 @@ def create_dataset(
         partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
     elif name == 'market1501_transformed':
-        im_dir = ospeu ( '~/Dataset/market1501/images' )
-        im_dir_oc = ospeu ( '~/Dataset/market1501/images/transformed' )
+        im_dir = ospeu ( '~/Dataset/market1501/images/transformed' )
         partition_file = ospeu ( '~/Dataset/market1501/partitions.pkl' )
 
     elif name == 'cuhk03':
@@ -68,39 +67,23 @@ def create_dataset(
 
     if part == 'trainval':
         ids2labels = partitions['trainval_ids2labels']
-
-        if name == 'market1501_transformed':
-            ret_set = TrainSet (
-                im_dir=im_dir_oc,
-                im_names=im_names,
-                ids2labels=ids2labels,
-                         **kwargs)
-        else:
-            ret_set = TrainSet (
-                im_dir=im_dir,
-                im_names=im_names,
-                ids2labels=ids2labels,
-                **kwargs )
+        ret_set = TrainSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            ids2labels=ids2labels,
+            **kwargs )
 
     elif part == 'train':
         ids2labels = partitions['train_ids2labels']
-        if name == 'market1501_transformed':
-            ret_set = TrainSet (
-                im_dir=im_dir_oc,
-                im_names=im_names,
-                ids2labels=ids2labels,
-                         **kwargs)
-        else:
-            ret_set = TrainSet (
-                im_dir=im_dir,
-                im_names=im_names,
-                ids2labels=ids2labels,
-                **kwargs )
+        ret_set = TrainSet (
+            im_dir=im_dir,
+            im_names=im_names,
+            ids2labels=ids2labels,
+            **kwargs )
 
     elif part == 'val':
         marks = partitions['val_marks']
         kwargs.update ( cmc_kwargs )
-
         ret_set = TestSet (
             im_dir=im_dir,
             im_names=im_names,
@@ -110,7 +93,6 @@ def create_dataset(
     elif part == 'test':
         marks = partitions['test_marks']
         kwargs.update ( cmc_kwargs )
-
         ret_set = TestSet (
             im_dir=im_dir,
             im_names=im_names,
