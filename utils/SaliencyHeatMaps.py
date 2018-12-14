@@ -11,7 +11,8 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from PIL import Image
-
+import glob
+from torch.nn import Parameter
 
 class CamExtractor():
     """
@@ -36,7 +37,6 @@ class CamExtractor():
             if module_name == 'fc':
                 return conv_output, x
             x = module(x)  # Forward
-            #print(module_name, module)
             if module_name == self.target_layer:
                 print('True')
                 x.register_hook(self.save_gradient)
@@ -99,7 +99,7 @@ class GradCam():
         cam = np.uint8(cam * 255)  # Scale between 0-255 to visualize
         return cam
 
-def save_class_activation_on_image(org_img, activation_map, file_name):
+def save_class_activation_on_image(org_img, activation_map, file_name,layer,save_dir):
     """
         Saves cam activation map and activation map on the original image
 
@@ -108,20 +108,22 @@ def save_class_activation_on_image(org_img, activation_map, file_name):
         activation_map (numpy arr): activation map (grayscale) 0-255
         file_name (str): File name of the exported image
     """
-    if not os.path.exists('../results'):
-        os.makedirs('../results')
+    if not os.path.exists(save_dir+file_name):
+        os.makedirs(save_dir+file_name)
+    path_to_file = os.path.join(save_dir,file_name, file_name + '_'+ layer + '.jpg')
+    cv2.imwrite(path_to_file, org_img)
     # Grayscale activation map
-    path_to_file = os.path.join('../results', file_name + '_Cam_Grayscale.jpg')
+    path_to_file = os.path.join(save_dir,file_name, file_name + '_'+ layer +'_Cam_Grayscale.jpg')
     cv2.imwrite(path_to_file, activation_map)
     # Heatmap of activation map
     activation_heatmap = cv2.applyColorMap(activation_map, cv2.COLORMAP_HSV)
-    path_to_file = os.path.join('../results', file_name + '_Cam_Heatmap.jpg')
+    path_to_file = os.path.join(save_dir,file_name, file_name + '_'+ layer + '_Cam_Heatmap.jpg')
     cv2.imwrite(path_to_file, activation_heatmap)
     # Heatmap on picture
     org_img = cv2.resize(org_img, (224, 224))
     img_with_heatmap = np.float32(activation_heatmap) + np.float32(org_img)
     img_with_heatmap = img_with_heatmap / np.max(img_with_heatmap)
-    path_to_file = os.path.join('../results', file_name + '_Cam_On_Image.jpg')
+    path_to_file = os.path.join(save_dir,file_name, file_name + '_'+ layer + '_Cam_On_Image.jpg')
     cv2.imwrite(path_to_file, np.uint8(255 * img_with_heatmap))
 
 def preprocess_image(cv2im, resize_im=True):
@@ -161,8 +163,6 @@ def load_state_dict(model, src_state_dict):
     This is modified from torch.nn.modules.module.load_state_dict(), to make
     the warnings and errors more detailed.
   """
-  from torch.nn import Parameter
-
   dest_state_dict = model.state_dict()
   for name, param in src_state_dict.items():
     name = str.replace(name,"base.","")
@@ -186,7 +186,7 @@ def load_state_dict(model, src_state_dict):
     for n in dest_missing:
       print('\t', n)
 
-def load_model():
+def load_model(weight_file_path=None, ver=0):
 
     model = models.resnet50(pretrained=True)
     num_ftrs = model.fc.in_features
@@ -200,40 +200,53 @@ def load_model():
     use_gpu = False
     if use_gpu:
         model = model.cuda()
-    '''  Start Load weights from Align ReId Modified model '''
-
-    checkpoint = torch.load(
-            'model_weight.pth', map_location=lambda storage, loc: storage)
-    load_state_dict(model,checkpoint)
-
-    '''  End Load weights from Align ReId Modified model '''
+    if weight_file_path:
+        '''  Start Load weights from Align ReId Modified model '''
+        checkpoint = torch.load(weight_file_path, map_location=lambda storage, loc: storage)
+        if ver == 1:
+            checkpoint_dict = checkpoint['state_dicts'][0]
+        else:
+            checkpoint_dict = checkpoint
+        load_state_dict(model, checkpoint_dict)
+        '''  End Load weights from Align ReId Modified model '''
     model.eval()
 
     return model
 
 if __name__ == '__main__':
-    example_list = ['../input_images/0019_c6s4_002427_00_r2.jpg',
-                    '../input_images/0019_c6s4_002427_00_o.jpg',
-                    '../input_images/0019_c5s3_076537_00_r.jpg',
-                    '../input_images/0019_c5s3_076537_00_o.jpg',
-                    '../input_images/0019_c3s3_075919_00.jpg',
-                    '../input_images/0019_c3s3_075919_00_o.jpg']
-
-    for img in example_list:
+    #new weight file
+    weight_file_path = './ckpt.pth'
+    ver = 1  # 1 for new weight file, 0 for original
+    source_dir = '../Dataset/Poster/Occluded/'
+    save_dir = '../results/Poster/New_Occluded/'
+    # old weight file
+    #weight_file_path = './model_weight.pth'
+    #ver = 0  # 1 for new weight file, 0 for original
+    #source_dir = '../Dataset/Poster/Occluded/'
+    #save_dir = '../results/Poster/Orig_Occluded/'
+    # Market1501/Occluded
+    layers = ['relu', 'layer1', 'layer2', 'layer3', 'layer4']
+    img_list = []
+    for img in glob.glob(source_dir+'*.jpg'):
+        img_list.append(img)
+    # Load the model
+    model = load_model(weight_file_path,ver)
+    #save_dir must already exist. New folder for each image will be created.
+    for img in img_list:
         img_path = img
-        file_name_to_export = img_path[img_path.rfind('/') + 1:img_path.rfind('.')]
+        file_name_to_export = img_path[img_path.rfind('\\') + 1:img_path.rfind('.')]
         # Open CV preporcessing
         image = cv2.imread(img_path)
-        image_prep = preprocess_image(image)
-        # Load the model
-        model = load_model()
-        # Grad cam
-        grad_cam = GradCam(model, target_layer='layer4')
-        # Generate cam mask
+        image_prep = preprocess_image(image,True)
         out = model(image_prep)
         target_class = out.data.numpy().argmax()
-        cam = grad_cam.generate_cam(image_prep, target_class)
-        # Save mask
-        save_class_activation_on_image(image, cam, file_name_to_export)
+        #Generate GradCams from various layers of netwrok
+        for layer in layers:
+            # Grad cam
+            grad_cam = GradCam(model, target_layer=layer)
+            # Generate cam mask
+            cam = grad_cam.generate_cam(image_prep, target_class)
+            # Save mask
+            save_class_activation_on_image(image, cam, file_name_to_export,layer,save_dir)
     print('Grad cam completed')
 
