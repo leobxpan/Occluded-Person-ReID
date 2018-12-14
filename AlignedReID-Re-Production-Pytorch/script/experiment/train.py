@@ -426,6 +426,7 @@ def main():
     elif cfg.only_test and cfg.pickle_path != '':
       modules_optims, model_w, TVT = pickle.load(open(cfg.pickle_path))
       test(load_model_weight=False)
+      return
 
   ############
   # Training #
@@ -695,9 +696,14 @@ def main():
   ########
   # Test #
   ########
-
-  test(load_model_weight=False)
-
+    # Test at 25, 50, 75 and 100 epochs
+    if ep in [25, 50, 75, 100]:
+      print("Testing at epoch: %s" %(ep))
+      test(load_model_weight=False)
+  
+  # Test finally as well
+  print("Final Testing...")
+  test ( load_model_weight=False )
 
 if __name__ == '__main__':
   main()

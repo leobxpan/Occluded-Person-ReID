@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5261f0-bd1e-4ba0-9f05-6fd16a99b934" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/model/loss.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
-              <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
+              <caret line="702" column="2" lean-forward="true" selection-start-line="702" selection-start-column="2" selection-end-line="702" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -62,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="264" column="29" lean-forward="true" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
+            <state relative-caret-position="-1964">
+              <caret line="235" column="5" lean-forward="true" selection-start-line="235" selection-start-column="5" selection-end-line="235" selection-end-column="5" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -142,9 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>2</find>
-      <find>label</find>
-      <find>gallery</find>
       <find>marks</find>
       <find>occluded</find>
       <find>g_tri_loss</find>
@@ -160,7 +155,6 @@
       <find>modules_optims</find>
       <find>save_ckpt</find>
       <find>dir</find>
-      <find>ckpt_file</find>
       <find>only_test</find>
       <find>pickle_file</find>
       <find>test</find>
@@ -172,6 +166,10 @@
       <find>def test</find>
       <find>pickle</find>
       <find>model_weight_file</find>
+      <find>resume</find>
+      <find>ckpt_file</find>
+      <find>exp_dir</find>
+      <find>load_ckpt</find>
     </findStrings>
     <replaceStrings>
       <replace>market1501_occluded</replace>
@@ -441,7 +439,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43395000" />
+    <option name="totallyTimeSpent" value="44838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
@@ -747,16 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="264" column="29" lean-forward="true" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/dataset/TestSet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -774,10 +762,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/aligned_reid/utils/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1964">
+          <caret line="235" column="5" lean-forward="true" selection-start-line="235" selection-start-column="5" selection-end-line="235" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AlignedReID-Re-Production-Pytorch/script/experiment/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
-          <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
+          <caret line="702" column="2" lean-forward="true" selection-start-line="702" selection-start-column="2" selection-end-line="702" selection-end-column="2" />
         </state>
       </provider>
     </entry>
