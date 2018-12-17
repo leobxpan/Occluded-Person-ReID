@@ -7,7 +7,7 @@ This is a project that tries to tackle the problem of occluded images for person
 We use Python 2.7 and Pytorch 0.3. For installing Pytorch, follow the [official guide](http://pytorch.org/). Other packages are specified in `requirements.txt`.
 
 ```bash
-pip install -r requirements.txt
+pip install -r AlignedReID-Re-Production-Pytorc/hrequirements.txt
 ```
 
 ## Dataset
