@@ -24,7 +24,7 @@ python 	AlignedReID-Re-Production-Pytorch/script/dataset/transform_market1501.py
 To generate occluded images for the Market1501 dataset, use the following command. It puts the images in /transformed folder inside the source image folder.
 
 ```bash
-python occlusion_simulator.py 
+python utils/occlusion_simulator.py 
   --d '~/Dataset/market1501/images/' 
   --h 50 
   --w 50 
@@ -38,7 +38,7 @@ python occlusion_simulator.py
 Our model works, as of now, only on Market dataset. Use the following command 
 
 ```bash
-python script/experiment/train.py \
+python AlignedReID-Re-Production-Pytorch/script/experiment/train.py \
 -d '(0,)' \
 -r 1 \
 --dataset market1501 \
